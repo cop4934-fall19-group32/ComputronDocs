@@ -1,0 +1,9 @@
+# LaTex gitignore
+*.pdf
+*.aux
+*.fdb_latexmk
+*.files
+*.log
+*.fls
+*.gz
+*.toc
