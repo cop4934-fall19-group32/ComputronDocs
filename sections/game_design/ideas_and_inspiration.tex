@@ -1,0 +1,204 @@
+\subsubsection{Ideas}
+The beginning of our project was characterized by a great deal of brainstorming. We took great strides
+to avoid a herd mentality when discussing possible game mechanics, themes, and designs. We frequently 
+separated to come up with ideas as individuals before returning to blend those ideas together into a more
+cohesive whole.
+
+\paragraph{Brandy King}
+\begin{itemize}
+  \item Smaller puzzles can be the parts of a larger cohesive piece
+  \begin{itemize}
+    \item The efficiency of a solution can dictate how well each piece works
+    together
+    \item Will reinforce revisiting puzzles that have already been solved to
+    find more efficient solutions (leading to a better solution overall)
+  \end{itemize}
+  \item Variable and Data Structure Declaring
+  \begin{itemize}
+    \item Separate declaration field from the solution space
+    \item Can add or remove variables/structures dynamically
+  \end{itemize}
+  \item Tutorial levels
+  \begin{itemize}
+    \item Explaining new instructions or data structures in a non-puzzle level
+    \item Allow users to “free play” with their available commands and see how
+    things work without the pressure of needing to use them to solve a puzzle
+    \item A “to-do” list with checkboxes of key concepts they need for each
+    command
+    \begin{itemize}
+      \item E.G. A Heap tutorial level “to-do” list would include:
+      \begin{itemize}
+        \item Declare a Heap
+        \item Put five inputs in the Heap
+        \item Remove five inputs from the Heap
+      \end{itemize}
+    \end{itemize}
+    \item The “to-do” list must be completed before the user can progress to the
+    next puzzle, where they will need to utilize the new element in the solution
+  \end{itemize}
+  \item Points-based scoring of solutions
+  \begin{itemize}
+    \item Quantify the solution provided with a ranking
+    \item Informs users on the efficiency of their solution
+  \end{itemize}
+  \item Limiting certain commands
+  \begin{itemize}
+    \item Can’t select to use a data structure space that isn’t declared
+    \item Certain commands will not be applicable to data structures
+    \begin{itemize}
+      \item I.e., data stored in a structure must be removed to be manipulated;
+      cannot arbitrarily add or subtract values stored there
+    \end{itemize}
+    \item Commands with changeable parts will be limited to available locations
+  \end{itemize}
+  \item Indentation within if statements to emphasize scope
+  \begin{itemize}
+    \item Will more clearly define to users which commands are reached within
+    conditionals; especially important when nested conditionals are introduced
+  \end{itemize}
+  \item Instruction “Jumbotron”
+  \begin{itemize}
+    \item An area above the puzzle space that broadcasts which command is being
+    executed at that time
+  \end{itemize}
+\end{itemize}
+
+\paragraph{John Billingham}
+\begin{itemize}
+  \item Abstracting conditional jumps with more conventional IF/ELSE statements
+  \item Counter that shows how many jumps have been used
+  \item Jump iterations used as a finite resource to enforce efficiency
+  \item Data Structures as Input/Output
+  \begin{itemize}
+    \item Arrays, etc
+    \item Different data structures unlocked as the puzzle complexity increases
+    \item An instruction set associated with each data structure, abstracting
+    some of the earlier instructions a bit
+  \end{itemize}
+  \item Atomic move instructions
+  \begin{itemize}
+    \item Replacing need to pick up and place down data by combing those into
+    one instruction
+  \end{itemize}
+  \item Add/Subtract specificities
+  \item Color-based indexing system
+  \item Return instruction
+  \item Debugging levels
+  \begin{itemize}
+    \item Broken solution given initially
+    \item Player must fix the broken solution
+    \item Can be used in conjunction with tutorials to teach new concepts
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Nicolas LaCognata:}\mbox{} \\
+My biggest inspiration for this project was \textit{Human Resource Machine} by the Tomorrow Corporation. 
+\textit{Human Resource Machine} is a charming little puzzle game that tackles the problem we settled on solving, 
+the gamification of computational thinking. I love the game, and find it highly engaging. However, playtests
+with non-programmers clearly demonstrated the games shortcomings when dealing with its target audience. 
+
+\subparagraph{Basic Mechanics:}\mbox{} \\
+When brainstorming the basic mechanics of our game, my mind continually strayed towards \textit{Human Resource Machine}. 
+Through playing the game, and watching others play it, it became clear that Tomorrow Corporation's decision to stick with 
+an assembly-like instruction set was an extremely effective mechanic.\\
+
+The assembly like instructions were simple enough for non-programmers to understand, and easy to compose together to make more
+advanced puzzles and solutions. Even at the risk of having our game appear as a rip-off, I thought it would be wise to adapt 
+these mechanics.
+
+\subparagraph{Data Structures:}\mbox{} \\
+After surveying many games in the problem space, we failed to find an example of a game that tackles computational thinking
+with the aid of Data Structures. Data Structures are such a fundamental part of being a programmer, that their omission in these 
+games seemed incorrect.
+
+\subparagraph{Card Game Mechanics:}\mbox{} \\
+During our prototyping sessions, I came up with the idea of “Memory Cards”. 
+These memory cards would allow the player to declare register locations and data 
+structures before their program starts running. Making the mechanics of placing these 
+memory cards similar to a game like \textit{Hearthstone: Heroes of Warcraft} would be 
+a natural and compelling addition to our puzzle format. This “Memory Card” interface 
+would be separate from the normal instruction writing interface, which helps reinforce 
+the idea that they are separate parts of the puzzle. \\
+
+Another benefit of this design is the ability to deliver new instructions and datastructures
+to the player in a familiar (and exceptionally game-y) way, card packs. Card games deliver 
+goodies to players in little packages whose contents appear hidden. While discussing adapting 
+card game mechanics, we realized that having that little unboxing moment when introducing new
+instructions to the player could be highly compelling. Other games in our problem space often 
+silently drop new instructions on the player as they progress. By making the new instructions 
+appear as a reward, we can ensure that the new mechanic being introduced gets the appropriate 
+attention from the player.
+
+\paragraph{Sean Simonian}
+\begin{itemize}
+  \item Static commands and restricted dynamic commands
+  \begin{itemize}
+    \item Certain commands in the language should be static, such as “Read
+    Input”
+    \item Certain commands in the language should have components that can be
+    selected from drop down menus, such as “Jump if (blank) (blank) (blank)”
+    \begin{itemize}
+      \item This command would have 3 sections to specify, so the user could
+      specify this command to be “Jump if x > 0”
+    \end{itemize}
+  \end{itemize}
+  \item Break more complex challenges into multiple steps that get checked along
+  the way.
+  \begin{itemize}
+    \item User would have instructions to complete one step of the complete
+    level challenge at a time, run their solution, and if they pass then they
+    move onto the next step, etc., until they work up to the solution.
+    \item This would help players grasp more complex concepts that would be
+    harder to teach as a single challenge that they have to break down on their
+    own.
+    \item Example: Merge Sort algorithm
+    \begin{itemize}
+      \item Step 1: split an array in half
+      \item Step 2: split an array in half recursively
+      \item Step 3: compare 2 of the sub arrays and swap them if necessary
+      \item Step 4: recursively compare and swap sub arrays to build back up to
+      the full sorted array
+    \end{itemize}
+  \end{itemize}
+  \item For testing the educational efficacy of the game, we could create a set
+  of short questions to be done on paper that require computational thinking.
+  Before a test subject plays our game, we have them work through a few of the
+  questions. Then after the test subject plays our game, we have them work
+  through a few more questions from the set. Compare the results to see if they
+  indicate whether our game helps users with computational thinking and problem
+  solving.
+  \item For testing the educational efficacy of the game, conducting official
+  tests through the UCF psych department would be very beneficial if we are able
+  to do so.
+  \begin{itemize}
+    \item Students taking courses such as Intro to Psychology are required to
+    spend a certain number of hours as a test subject as part of their course
+    grade. They use SONA to view available tests and sign up for a time slot,
+    and the experiments that involve playing video games tend to fill up very
+    quickly.
+    \item Since Intro to Psychology is a general education course, many subjects
+    are freshman, and the majority are not studying computer science or similar
+    majors. This could provide an abundant set of candidates that match our
+    target audience.
+    \item We have to figure out who to contact if we want to set this up for
+    next semester.
+    \item The UCF psychology department may only allow these official tests to
+    be set up and run by psych majors and/or psych graduate students doing
+    research. If this is the case, we could look for a grad student conducting
+    educational research who would be interested in “sponsoring” these official
+    tests.
+  \end{itemize}
+  \item Incorporate basic cyber security and cryptography concepts into additional
+  challenges/puzzles.
+  \begin{itemize}
+    \item This was a goal early on, but the current design for the game
+    mechanics would make this difficult to add to the game.
+  \end{itemize}
+  \item Initial ideas for computer science concepts to teach. As we narrowed
+  down the specifications for our game, these ideas were thrown out as they will
+  not fit in the game at all
+  \begin{itemize}
+    \item Artificial intelligence, neural networks, machine learning
+    \item Blockchain technology and its applications
+  \end{itemize}
+\end{itemize}
