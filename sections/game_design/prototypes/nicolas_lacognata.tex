@@ -1,4 +1,218 @@
-\todo{Create and format your LaTeX prototype write up here. Keep in mind that we
-are currently in a subsubsection when labeling any headers (use paragraph and
-subparagraph).}
+For my prototype, I spent a lot of time focusing on how we should integrate data structures into our assembly-based
+puzzle structure. The approach I took saw players attaching data structures to registers to 'augment" them and
+change how the register stores and processes information. I also took a stab at defining a theme for our game.\\
+
+\textbf{Setting}\\
+In Automata, you play an Automaton stuck in a laboratory who is tasked with reprogramming itself to solve problems.
+When solving the puzzle, they player may be addressed by a narrator when they make a mistake. The game was to have 
+a "Mad Science" feel to it, much like \textit{Portal}.\\
+
+\textbf{Rules}\\
+For each puzzle the player is presented with a problem, and they must use the provided instructions to solve it. 
+Every puzzle will contain the following elements:
+
+\begin{itemize}
+    \item An Input track
+    \item An Output track
+    \item A set of static registers built into the test chamber
+    \begin{itemize}
+        \item These resisters all the player to store manage multiple data cubes
+    \end{itemize}
+    \item A set of register augmenters
+    \item \begin{itemize}
+        \item These augmenters turn the registers into special data structures that can make the puzzles easier/possible.
+    \end{itemize}
+    \item An instruction set
+    \begin{itemize}
+        \item These are the instructions the automata can execute to solve the puzzle. When placed in the solution window,
+        they will be executed in the order they appear
+    \end{itemize}
+    \item Some operations are invalid for certain states of the puzzle. For your safety, please avoid executing invalid operations.
+\end{itemize}
+
+\textbf{Instruction Set}
+\begin{center}
+    \begin{tabular}{ | m{3cm} | m{11cm} | } 
+        \hline
+            \begin{center}
+                \textbf{INPUT} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline Allows your automata to grab an item from the input track. It places it in its hands.
+
+            \textbf{Notes:} 
+            \newline Your automata will drop any item currently in their hands to accept the new input, losing the old data forever.
+            \newline If the input track is empty, the automata will do nothing
+
+            \textbf{Faults:}
+            \newline None\\
+        \hline
+            \begin{center}
+                \textbf{OUTPUT} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline Allows your automata to place the item in its register into the output track.
+
+            \textbf{Notes:} 
+            \newline None
+
+            \textbf{Faults:}
+            \newline None\\
+        \hline
+            \begin{center}
+                \textbf{SUBMIT} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline Allows your automata to submit its output for evaluation.
+
+            \textbf{Notes:} 
+            \newline This should always be the last instruction in your program.
+
+            \textbf{Faults:}
+            \newline Output Empty Error
+            \newline Output Incorrect Error\\ 
+        \hline
+            \begin{center}
+                \textbf{JUMP} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This type of jump is unconditional. When your automata read this instruction, it will move its instruction 
+            counter to the corresponding anchor, effectively skipping forward or backward in your program.
+
+            \textbf{Notes:} 
+            \newline This instruction can be used to create loops.
+
+            \textbf{Faults:}
+            \newline Output Empty Error
+            \newline Output Incorrect Error\\ 
+        \hline
+    \end{tabular}
+
+    \begin{tabular}{ | m{3cm} | m{11cm} | } 
+        \hline
+            \begin{center}
+                \textbf{JUMP IF NULL} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This type of jump is conditional. When your automata read this instruction, it will move its instruction counter 
+            to the corresponding anchor, if (and only if) its hands are empty.
+
+            \textbf{Notes:} 
+            \newline This instruction can be used to exit loops when there is no more input.
+
+            \textbf{Faults:}
+            \newline None\\
+        \hline
+            \begin{center}
+                \textbf{JUMP IF LESS X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This type of jump is conditional. When your automata read this instruction, it will move its 
+            instruction counter to the corresponding anchor, if (and only if) the data in its hand is less than the data in register X.
+
+            \textbf{Notes:} 
+            \newline This instruction can be used to exit loops or select branches of logic.
+
+            \textbf{Faults:}
+            \newline Hand Empty Error
+            \newline Register Empty Error\\
+        \hline
+            \begin{center}
+                \textbf{JUMP IF GREATER X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This type of jump is conditional. When your automata read this instruction, it will move its instruction counter 
+            to the corresponding anchor, if (and only if) the data in its hand is less than the data in register X.
+
+            \textbf{Notes:} 
+            \newline This instruction can be used to exit loops or select branches of logic.
+
+            \textbf{Faults:}
+            \newline Hand Empty Error
+            \newline Register Empty Error\\
+        \hline
+    \end{tabular}
+
+    \begin{tabular}{ | m{3cm} | m{11cm} | } 
+        \hline
+            \begin{center}
+                \textbf{MOVETO X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This instruction allows your automata to place the items in its hand into a register on the board, specified by the argument X.
+
+    
+            \textbf{Notes:} 
+            \newline This instruction overwrites any data in the target register, and empties your automata’s hand.
+    
+            \textbf{Faults:}
+            \newline Hand Empty Error\\
+        \hline
+            \begin{center}
+                \textbf{COPYTO X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This instruction allows your automata to copy the items in its hand into a register on the board, specified by the argument X.
+    
+            \textbf{Notes:} 
+            \newline This instruction overwrites any data in the target register, your automata retains a copy of the data.
+    
+            \textbf{Faults:}
+            \newline Hand Empty Error\\
+        \hline
+            \begin{center}
+                \textbf{MOVEFROM X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This instruction allows your automata to take an item from a register and keep it in its hand.
+
+    
+            \textbf{Notes:} 
+            \newline This instruction overwrites any data the automata is holding and removes the data from the target register.
+    
+            \textbf{Faults:}
+            \newline None\\
+        \hline
+            \begin{center}
+                \textbf{COPYFROM X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This instruction allows your automata to copy an item from a register and keep it in its hand.
+    
+            \textbf{Notes:} 
+            \newline This instruction overwrites any data the automata is holding, the data also remains in the target register.
+    
+            \textbf{Faults:}
+            \newline None\\
+        \hline
+    \end{tabular}
+
+    \begin{tabular}{ | m{3cm} | m{11cm} | } 
+        \hline
+            \begin{center}
+                \textbf{ADD X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This instruction allows your automata to add the value stored in a register to the value stored in its hand.
+    
+            \textbf{Notes:} 
+            \newline The result of the operation is stored back in the automata’s hand.
+    
+            \textbf{Faults:}
+            \newline Register Empty Error\\
+        \hline
+            \begin{center}
+                \textbf{ADD X} 
+            \end{center}& 
+            \textbf{Summary:} 
+            \newline This instruction allows your automata to subtract the value stored in a register to the value stored in its hand.
+
+            \textbf{Notes:} 
+            \newline The result of the operation is stored back in the automata’s hand.
+
+            \textbf{Faults:}
+            \newline Register Empty Error\\
+        \hline
+    \end{tabular}
+\end{center}
 \newpage
