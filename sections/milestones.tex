@@ -77,68 +77,59 @@ inform any design changes we make to our prototype.
   \end{itemize}
 \end{itemize}
 
-\subsection{Hello Game (Friday, November 29th)}
+\subsection{Hello Game (Wednesday, Dec 4th)}
 
 \subsubsection*{Summary}
-This milestone marks our first code-based deliverables. Now that all members of
-the team have a solid understanding of our final product, we can begin
-prototyping in code. In addition to continued playtesting and research, this
-month will give the team a chance to start learning the technology we will need
-to complete the project.
+This milestone marks our the delivery of our proof of concept prototype. The teams advisor will evaluate the prototype and provide reccommendations for moving forward. The prototype will show an extremely basic vertical slice of our final game. 
 
 \subsubsection*{Deliverables}
-For this milestone, we’d like to have an \textbf{extremely rudimentary} prototype
-of our core gameplay loop up and running. This will be our “Hello World”.
+The only deliverable for this milestone will be the Hello World prototype. This prototype should meet the following requirements:
 
-A player should be able to:
-\begin{enumerate}
-  \item Start the game
-  \item Open a puzzle level
-  \item Be presented with a basic UI
-  \item Be able to drag the input and output commands into the instruction
-  window
-  \item See an entity grab items from the input box, and place it in the output
-  box
-\end{enumerate}
-
-To accomplish this we need:
 \begin{itemize}
-  \item A puzzle level to exist
+  \item Usability
+  
+  The prototype shall show the entire scene flow of our game. A user should be able to move between the Main Menu, Puzzle Selection, and Puzzle scenes at will. The game should respond to these requests gracefully, and never leave the user trapped in a scene. 
+
+  \item Game Mechanics
+
+  The foundations of the game's major mechanics should be in place and interactable, and are specified below by scene.
   \begin{itemize}
-    \item Has a randomly generated input set (X numbers)
-    \item Generates a solution to that set (The same X numbers)
+    \item Main Menu
+    
+    The Main Menu scene should display the game's working title \textbf{\textit{Computron}}, as well as a functional Play Button that will bring the user to the Puzzle Selection Scene. The scene should also have a placeholder background image.
+
+    \item Puzzle Selection Scene
+    
+    The Puzzle Selection Scene should display a placeholder level graph, with selectable nodes. Each node should transfer the player to the Puzzle Scene. The player should also be able to return to the main menu.
+
+    \begin{figure}[!hb]
+      \begin{center}
+        \includegraphics[width=5cm]{HelloWorldLevelSelect.png}
+        \caption{Sample level graph.}
+        \label{fig:boat1}
+      \end{center}
+    \end{figure}
+
+    \item Puzzle Scene
+    
+    The Puzzle Scene will be the most involved portion of our prototype. Desired mechanics are listed below by discipline:\\
+
+    \textbf{UI:} The Puzzle UI will need to allow the player to perform the basic puzzle solving operations. It should present the player with an instruction set (\textit{Input, Output}) from which they may drag instructions into a solution window. The Puzzle UI should present controls to allow the player to begin and terminate the simulation of their solution. When the player's solution is being executed, the UI should prohibit alterations to the solution window and display a program counter to mark the current instruction being executed.\\
+
+    \textbf{Level Design:} The level design of the Puzzle Scene will present all of the static elements that will be present in every puzzle of our game. It will display an input box with randomly generated contents, an output box that can accept objects from the actor, and a simple background plate.\\
+
+    \textbf{Puzzle Logic:} Working in tandem with the level design, the puzzle scene's logic system should be operational. Puzzle Logic is responsible for loading the scene with the appropriate puzzle information. This includes a randomly generated input box, the level prompt, an expected output, and the logic to read the output box upon program completion to grade the player's solution.\\
+    
+    \textbf{Interpreter:} The interpreter is the glue that binds the UI controls to the Actor system. For this milestone, the Interpreter should be able to access and process the player's solution stored in the solution window. When the player starts the simulation the Interpreter should process the instructions (ensuring none are malformed) and make them available to the actor upon request. When the actor requests an instruction, the interpreter will update it's program counter accordingly and report the counter's new position to the UI. The Interpreters PC calculation should be fully operational for the Input, Output, and Unconditional Jump commands\\
+
+    \textbf{Actor:} For this milestone, the actor should be able to query the interpreter for instructions to execute and interact with static level elements. Upon receiving an input command, the Actor should move to the input box and remove at item. The currently held item should be displayed on the Actor. Upon receiving an output command, the Actor should move to the output box and deposit the currently held item. If the actor does not have an item in hand, it should report a fault to the interpreter so that simulation can be halted. If the actor see's two input commands back to back, it should discard its currently held item and attempt to take from the input box again.\\
+    
   \end{itemize}
-  \item The player’s UI to work
-  \begin{itemize}
-    \item Present player with instruction set
-    \begin{itemize}
-      \item Input
-      \item Output
-    \end{itemize}
-    \item Allow player to drag and drop instructions into their script
-    \begin{itemize}
-      \item The script generates a data structure that the interpreter can then read
-    \end{itemize}
-  \end{itemize}
-  \item A worker entity
-  \begin{itemize}
-    \item Worker entity acts out the players instructions
-    \item Accepts commands from interpreter
-  \end{itemize}
-  \item An interpreter
-  \begin{itemize}
-    \item Parses player script from UI
-    \item Interprets player instructions
-    \begin{itemize}
-      \item Simulates delay to allow instructions to complete
-      \item Handles basic instructions
-      \begin{itemize}
-        \item Input
-        \item Output
-        \item MoveTo/From Register
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
+
+  \item Art
+  
+  For this milestone programmer art placeholders are acceptable. However, the team should have a plan in place to aquire quality art assets.
+
 \end{itemize}
 
 \subsection{Waterfall Method (Thursday, December 5th)}
