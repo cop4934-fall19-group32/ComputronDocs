@@ -7,3 +7,5 @@
 *.fls
 *.gz
 *.toc
+*.dvi
+*.synctex*
