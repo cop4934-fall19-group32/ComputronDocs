@@ -115,3 +115,244 @@ The tutorial sequence of \textit{Computron} will introduce players to the game's
         \hline
     \end{tabular}
 \end{center}
+
+\paragraph{Level 4: Flip Flop}
+\subparagraph{Learning Objective:} Introduce variable declaration, and present the player with their first signifigant challenge.
+
+\subparagraph{Problem:} There are two items in the input box. Place them in the outbox in reverse order.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+                \item MOVTO X
+                \item MOVEFROM X
+            \end{itemize}
+            \textbf{Available Cards:} 
+            \begin{itemize}
+                \item Register x2
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item Play Register [0]
+                \item INPUT
+                \item MOVETO 0
+                \item INPUT
+                \item OUTPUT
+                \item MOVEFROM 0 
+                \item OUTPUT
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 5: Flip Flop Hop}
+\subparagraph{Learning Objective:} Allow players to experiement with the new register mechanic, and guide them to generalize their previous solution.
+
+\subparagraph{Problem:} There are 50 items in the input box. Place each pair of of items in the inbox to the outbox in reverse order.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+                \item MOVTO X
+                \item MOVEFROM X
+            \end{itemize}
+            \textbf{Available Cards:} 
+            \begin{itemize}
+                \item Register x2
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item Play Register [0]
+                \item INPUT
+                \item JUMP IF NULL [EOP]
+                \item MOVETO 0
+                \item INPUT
+                \item OUTPUT
+                \item MOVEFROM 0 
+                \item OUTPUT
+                \item JUMP [2]
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 6: Triceraflops}
+\subparagraph{Learning Objective:} Expand player's understanding of the power of registers, and start guiding them toward seeing the value of stacks.
+
+\subparagraph{Problem:} There are 3 items in the input box. Place all three in the output box in reverse order.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+                \item MOVTO X
+                \item MOVEFROM X
+            \end{itemize}
+            \textbf{Available Cards:} 
+            \begin{itemize}
+                \item Register x4
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item Play Register [0]
+                \item Play Register [1]
+                \item INPUT
+                \item MOVETO 0
+                \item INPUT
+                \item MOVETO 1
+                \item INPUT
+                \item OUTPUT
+                \item MOVEFROM 1 
+                \item OUTPUT
+                \item MOVEFROM 0 
+                \item OUTPUT
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 7: Triceraflops Hops}
+\subparagraph{Learning Objective:} Force the player to generalize their previous solution for N inputs
+
+\subparagraph{Problem:} There are 90 items in the input box. For each set of three in the inbox, transfer to the outbox in reverse order.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+                \item MOVTO X
+                \item MOVEFROM X
+            \end{itemize}
+            \textbf{Available Cards:} 
+            \begin{itemize}
+                \item Register x4
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item Play Register [0]
+                \item Play Register [1]
+                \item INPUT
+                \item JUMP IF NULL [EOP]
+                \item MOVETO 0
+                \item INPUT
+                \item MOVETO 1
+                \item INPUT
+                \item OUTPUT
+                \item MOVEFROM 1 
+                \item OUTPUT
+                \item MOVEFROM 0 
+                \item OUTPUT
+                \item JUMP 3
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 8: Fat Stacks}
+\subparagraph{Learning Objective:} Introduce players to the Stack datastructure, and demonstrate its FIFO property by having them reverse the input stream.
+
+\subparagraph{Problem:} There are 6 items in the input box. Transfer each item into the outbox in reverse order.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+                \item MOVTO X
+                \item MOVEFROM X
+            \end{itemize}
+            \textbf{Available Cards:} 
+            \begin{itemize}
+                \item Register x4
+                \item Stack x1
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item Play Stack [0]
+                \item INPUT
+                \item JUMP IF NULL [6]
+                \item MOVETO 0
+                \item JUMP 2
+                \item MOVEFROM [0]
+                \item JUMP IF NULL [EOP]
+                \item OUTPUT
+                \item JUMP 6
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 9: Comparatron}
+\subparagraph{Learning Objective:} Introduce players to conditional jumps, and show that jumps can be used to select branches of logic.
+
+\subparagraph{Problem:} The input box has two items in it. output the greater of the two.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+                \item JUMP IF LESS X
+                \item JUMP IF GREATER X
+                \item MOVTO X
+                \item MOVEFROM X
+            \end{itemize}
+            \textbf{Available Cards:} 
+            \begin{itemize}
+                \item Register x2
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item Play Register [0]
+                \item INPUT
+                \item MOVETO 0
+                \item INPUT
+                \item JUMP IF GREATER 0, 7
+                \item MOVEFROM 0
+                \item OUTPUT
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
