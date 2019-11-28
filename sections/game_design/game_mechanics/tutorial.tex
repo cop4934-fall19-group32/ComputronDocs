@@ -1,0 +1,117 @@
+The tutorial sequence of \textit{Computron} will introduce players to the game's mechanics and allow players to acclimate to the puzzle solving workflow. The ordering of the tutorial sequence is crafted to control the rate at which players learn, and provide a smooth difficulty curve while constantly presenting new mechanics and concepts. \\
+
+\paragraph{Level 1: Ins and Outs}
+\subparagraph{Learning Objective:} Teach players the very basics of our user interface through a simple puzzle.
+
+\subparagraph{Problem:} There is a single item in the input box. Please transfer it into the output box.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item INPUT
+                \item OUTPUT
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+
+\paragraph{Level 2: Ins and Outs pt. 2}
+\subparagraph{Learning Objective:} Ensure that the player understands the basic mechanics of commanding Computron by requiring them to chain the previous puzzle's solution. In addition, prepare the player to understand the value of loops.
+
+\subparagraph{Problem:} There are five items in the input box. Please transfer all of them into the output box.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item INPUT
+                \item OUTPUT
+                \item INPUT
+                \item OUTPUT
+                \item INPUT
+                \item OUTPUT
+                \item INPUT
+                \item OUTPUT
+                \item INPUT
+                \item OUTPUT
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 2a (Optional): Alternator}
+\subparagraph{Learning Objective:} Demonstrate a nuanced mechanic of the input instruction. It it not apparent from the previous puzzles, but executing two input commands in succession will cause Computron to discard the first.
+
+\subparagraph{Problem:} There are 6 items in the input box. Please transfer every other item to the output box, starting with the second input.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item INPUT
+                \item INPUT
+                \item OUTPUT
+                \item INPUT
+                \item INPUT
+                \item OUTPUT
+                \item INPUT
+                \item INPUT
+                \item OUTPUT
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{Level 3: Hip Hop}
+\subparagraph{Learning Objective:} Introduce the concept of jumping and looping.
+
+\subparagraph{Problem:} There are 100 items in the input box. Please transfer each item to the output box, starting with the second input.
+
+\subparagraph{Solution:} 
+\begin{center}
+    \begin{tabular}{ | m{5cm} | m{9cm} | } 
+        \hline
+            \textbf{Available Instructions:} 
+            \begin{itemize}
+                \item INPUT
+                \item OUTPUT
+                \item JUMP
+                \item JUMP IF NULL
+            \end{itemize}& 
+            \textbf{Expected Solution:} 
+            \begin{enumerate}
+                \item INPUT
+                \item JUMP IF NULL [EOP]
+                \item OUTPUT
+                \item JUMP [1]
+            \end{enumerate}
+            \\
+        \hline
+    \end{tabular}
+\end{center}
