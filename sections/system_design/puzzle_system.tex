@@ -68,7 +68,7 @@ or not the player has previously attempted to solve the puzzle level. This
 decision process is exemplified in Figure \ref{fig:json_decision_diagram}.\\
 
 If the JSON file does not exist, the player has not ever attempted the chosen level before. The
-generator will then need to call upon a level initalization script that will
+generator will then need to call upon a level initialization script that will
 create a JSON file for the level that represents it's initial state. After the file
 is written, it's data is loaded by the generator and the puzzle scene is loaded.
 This sequence is shown in Figure \ref{fig:level_initialization_diagram}.\\
@@ -76,6 +76,15 @@ This sequence is shown in Figure \ref{fig:level_initialization_diagram}.\\
 If it JSON file does exist, the generator simply skips the initialize step and
 loads the puzzle scene state based on the file that was found for the level (as
 shown in Figure \ref{fig:level_loading_diagram}).\\
+
+This flow of control combines initialization and loading processes in order to simplify
+the entire scheme. The only difference between the two is the possible need to
+initially create a level's JSON file, but that created file, or the one that already
+existed under the same name, is always loaded by the generator.\\
+
+When a game is ran for the first time, there will be no JSON files associated to
+ANY level. This means that the level initialization script will be invoked each time
+the player opens a new level, as expected.\\
 
 \begin{figure}[!hb]
   \caption{Puzzle Level Initialization/Loading Decision}
@@ -105,11 +114,11 @@ shown in Figure \ref{fig:level_loading_diagram}).\\
 \subsubsection{Level Saving}
 When the player decides to leave a puzzle level (exiting the game, returning to the
 level menu, etc), the puzzle system saves the state of the current level by writing
-to the JSON file associated to it. Figure \ref{level_saving_diagram} shows this process.
+to the JSON file associated to it. Figure \ref{fig:level_saving_diagram} shows this process.
 
 \begin{figure}[!hb]
   \caption{Puzzle Level Saving}
-  \label{level_saving_diagram}
+  \label{fig:level_saving_diagram}
   \centering
   \includegraphics[scale=0.9]{Diagrams/level_saving_diagram.png}
 \end{figure}
@@ -137,6 +146,81 @@ Data Needed for Loading a Previous Level State:
   \item Instructions in editor
 \end{itemize}
 
-\subsubsection{Input / Output (I/O)}
+\subsubsection{Input}
 The puzzle system is in charge of filling the puzzle scene's input box with data
-that is necessary for the chosen level.
+that is necessary for the chosen level. As shown by Figure \ref{fig:Puzzle_System_Input_Overview}, the puzzle generator
+takes an input size, n, from the JSON file, and randomly generates an array of n
+numbers that is used to fill the input box with corresponding data. A more visualized
+look at how the input box game object is filled is shown in Figure \ref{fig:Puzzle_System_Input_Same_Before}.\\
+
+\begin{figure}[!hb]
+  \caption{Puzzle System: Input Overview}
+  \label{fig:Puzzle_System_Input_Overview}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overview.png}
+\end{figure}
+
+The puzzle system is responsible for giving the actor the correct data from the
+input box when it is needed. The actor can make an input request to the input box.
+The system will simply return the top-most element from the input box to the actor entity, along with the
+numerical data that is associated with it behind the scenes (see Figure \ref{fig:Puzzle_System_Input_Actor}).\\
+
+Note:\\
+
+If the actor make an input request to an empty input box, the puzzle system
+will return NULL.\\
+
+The input box has a fixed number of input items that can fit inside (5 in our examples).
+Sometimes the size of the input stream can be larger than the size of the input box
+itself. In this case, the input box works as a queue. If we had an input stream of
+size 6, the 6th element would be hidden until the top-most element of the input box
+is removed by the actor. All of the elements below will move up a slot and the
+hidden 6th element would then appear at the bottom, as shown in Figure \ref{fig:Puzzle_System_Input_Overload_Before} and
+Figure \ref{fig:Puzzle_System_Input_Overload_After}.\\
+
+If the input stream is the same size as the input box, or if the actor has removed
+enough numbers from a larger stream and there are no more slots to fill, the input numbers
+behave only slightly differently. Figure \ref{fig:Puzzle_System_Input_Same_Before}
+and Figure \ref{fig:Puzzle_System_Input_Same_After} show how the numbers below will move up a slot, like before,
+but the bottom slot will be left empty.\\
+
+\begin{figure}[!hb]
+  \caption{Puzzle System: Input-Box/Actor Communication}
+  \label{fig:Puzzle_System_Input_Actor}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Actor.png}
+\end{figure}
+
+\begin{figure}[!hb]
+  \caption{Puzzle System: Input-Box Overloading (before)}
+  \label{fig:Puzzle_System_Input_Overload_Before}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overload_Before.png}
+\end{figure}
+
+\begin{figure}[!hb]
+  \caption{Puzzle System: Input-Box Overloading (after)}
+  \label{fig:Puzzle_System_Input_Overload_After}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overload_After.png}
+\end{figure}
+\vfill
+\clearpage
+
+\begin{figure}[!hb]
+  \caption{Puzzle System: Input-Box Same Size (before)}
+  \label{fig:Puzzle_System_Input_Same_Before}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Same_Before.png}
+\end{figure}
+
+\begin{figure}[!hb]
+  \caption{Puzzle System: Input-Box Same Size (after)}
+  \label{fig:Puzzle_System_Input_Same_After}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Same_After.png}
+\end{figure}
+\vfill
+\clearpage
+
+\subsubsection{Output}
