@@ -185,21 +185,21 @@ and Figure \ref{fig:Puzzle_System_Input_Same_After} show how the numbers below w
 but the bottom slot will be left empty.\\
 
 \begin{figure}[!hb]
-  \caption{Puzzle System: Input-Box/Actor Communication}
+  \caption{Input-Box/Actor Communication}
   \label{fig:Puzzle_System_Input_Actor}
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Actor.png}
 \end{figure}
 
 \begin{figure}[!hb]
-  \caption{Puzzle System: Input-Box Overloading (before)}
+  \caption{Input-Box Overloading (before)}
   \label{fig:Puzzle_System_Input_Overload_Before}
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overload_Before.png}
 \end{figure}
 
 \begin{figure}[!hb]
-  \caption{Puzzle System: Input-Box Overloading (after)}
+  \caption{Input-Box Overloading (after)}
   \label{fig:Puzzle_System_Input_Overload_After}
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overload_After.png}
@@ -208,14 +208,14 @@ but the bottom slot will be left empty.\\
 \clearpage
 
 \begin{figure}[!hb]
-  \caption{Puzzle System: Input-Box Same Size (before)}
+  \caption{Input-Box Same Size (before)}
   \label{fig:Puzzle_System_Input_Same_Before}
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Same_Before.png}
 \end{figure}
 
 \begin{figure}[!hb]
-  \caption{Puzzle System: Input-Box Same Size (after)}
+  \caption{Input-Box Same Size (after)}
   \label{fig:Puzzle_System_Input_Same_After}
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Same_After.png}
@@ -224,3 +224,68 @@ but the bottom slot will be left empty.\\
 \clearpage
 
 \subsubsection{Output}
+In regards to output, the puzzle system handles the interaction points between:
+\begin{itemize}
+  \item The output box
+  \item The actor
+  \item The output validator
+\end{itemize}
+The actor, after recieving an output instruction from the interpreter, places the
+data item from its hands to the output box. After the all of the instructions are run, the
+entire contents of the output box are submitted for validation, as shown in Figure
+\ref{fig:Puzzle_System_Output_Interaction}.\\
+
+The puzzle generation script generates the expected output based on the input that
+was also generated previously. An output validation script takes the contents of
+the player's output box, their solution, and compares it against the expected output.
+If the contents match, the player has solved the puzzle. If the contents do not match,
+the player's solution did not solve the puzzle. Figure \ref{fig:Puzzle_System_Output_Validation} shows this decision process.
+
+\begin{figure}[!hb]
+  \caption{Output Interaction Points}
+  \label{fig:Puzzle_System_Output_Interaction}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Output_Interaction.png}
+\end{figure}
+
+\begin{figure}[!hb]
+  \caption{Output Validation}
+  \label{fig:Puzzle_System_Output_Validation}
+  \centering
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Output_Validation.png}
+\end{figure}
+\vfill
+\clearpage
+
+\subsubsection{Game Cards}
+The puzzle system makes use of the puzzle generator in order to tell the user interface
+which game cards are placed in certain positions on the game board when beginning
+or loading a level. Card positions are pulled from the current level's JSON file.
+A card position not only indicates if a card is in the player's card hand or the puzzle board's
+card slots, but also the position within either of those areas.\\
+
+The card hand is filled during initialization. The JSON file will contain the following:
+\begin{itemize}
+   \item Number of register cards
+   \item Number of stack cards
+   \item Number of queue cards
+   \item Number of heap cards
+\end{itemize}
+
+The intitial content of the card hand is based on this data, although the locations
+of these cards may be changed later on.\\
+
+Any update to a card's position will be reflected when returning to that level.
+When a level is exited, all of the cards locations on the game board are saved to
+that level's JSON file. When a level is loaded at another point in time, the card
+objects will be instantiated based on their locations, rather than the number of
+each card like above.\\
+
+\begin{figure}[!hb]
+  \caption{Game Card Position Loading/Intializing}
+  \label{fig:Puzzle_System_Cards}
+  \centering
+  \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Cards.png}
+\end{figure}
+
+\subsubsection{Instructions}
