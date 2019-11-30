@@ -135,92 +135,82 @@ The only deliverable for this milestone will be the Hello World prototype. This 
 \subsection{Waterfall Method (Thursday, December 5th)}
 
 \subsubsection*{Summary}
-This milestone marks the end of Senior Design 1. As such, we are required by the
-class to produce a document that outlines all of our plans for Senior Design 2.
-This document will describe all the intricacies of our project.
+This milestone marks the deadline for our Senior Design 1 documentation. The document must be complete, professionally bound, and delivered to HEC-345 by 1:00PM.
 
 \subsubsection*{Deliverables}
 As per the requirements of this course, our final design document will describe
 all aspects of the project including:
-\begin{itemize}
-  \item Our initial research
-  \begin{itemize}
-    \item We will satisfy this requirement through our findings in published
-    research, as well as our findings through playtests of our game and others
-  \end{itemize}
-  \item Personal Motivations
-  \item Broader Impacts
-  \item Design
-  \begin{itemize}
-    \item Our design will rely heavily on our initial research findings, and
-    include a wide range of diagrams.
-  \end{itemize}
-  \item Theory of Operation
-  \begin{itemize}
-    \item Our theory of operation will best be conveyed through the paper
-    prototypes we produced in the early stages of our project. Therefore, our
-    final design document should include extensive write ups of those prototypes.
-  \end{itemize}
- \item Implementation methodology
- \item Milestones
- \item Testing
- \begin{itemize}
-   \item The testing of our project will be difficult due to the nature of game
-   programming. In industry, many studios forgo unit testing of non-engine code.
-   We will need to come up with a rigorous set of manual tests, as well as a
-   consistent playtesting schedule to ensure our game remains in a functioning
-   state.
- \end{itemize}
- \item Final Performance/Results
-\end{itemize}
+\begin{enumerate}
+  \item An executive summary
+  
+  The Executive Summary will give a high level overview about the purpose of the project, and how the project will fulfill that purpose. The executive summary should be written in language accessible to non-technical professionals.
+
+  \item A section detailing project signifigance
+  
+  This section should echo our executive summary in greater detail, with more specific language.
+
+  \item A section describing our requirements
+  
+  This section should include an exhaustive list of our project's functional and non-functional requirements.
+
+  \item A section detailing our game's design process
+  
+  This section should describe the team's efforts in discovering project requirements, and relate the game mechanics chosen to the projects goals.
+
+  \item A section detailing our game's technical design
+  
+  This section should describe the layout of the game's code systems. It should include detailed technical discussions and diagrams to guide development.
+
+  \item The project's milestones
+  
+  The milestones will be sets of requirements to ensure the project remains on track.
+
+\end{enumerate}
 
 \subsection{Open to Interpretation (Monday, January 10th)}
 
 \subsubsection*{Summary}
-This milestone marks the beginning of Senior Design 2, and as such we should
-have an expanded prototype of our game. It still may be rough around the edges,
-but it should demonstrate that we are capable of carrying this project out by
-the end of the semester.
+"Open to Interpretation" will mark the project's Alpha release. In this state, the game should be functional enough to place in front of a playtester without developer intervention. All basic game mechanics will be fully functional, and observing gameplay should produce relevant observations for the development team.
 
 \subsubsection*{Deliverables}
-A player should be able to:
-\begin{enumerate}
-  \item Start the game
-  \item Be presented with a non-trivial puzzle
-  \item Use an expanded instruction set to solve the puzzle
-\end{enumerate}
+This milestone’s deliverable is a stable Alpha release of our game. The requirements of the Alpha release are as follows:
 
-To accomplish this we need:
 \begin{itemize}
-  \item A generalized puzzle format
-  \begin{itemize}
-    \item Input, Output, success, failure
-    \item Register Memory Cards
-  \end{itemize}
-  \item An improved worker entity
-  \begin{itemize}
-    \item Follows player instructions
-  \end{itemize}
-  \item Improved UI
-  \begin{itemize}
-    \item Graphics for new instructions
-    \item Markings for active instruction
-  \end{itemize}
-  \item An expanded Interpreter
-  \begin{itemize}
-    \item Handles several instructions
+  \item Player experience
+  
+  The player experience should be polished enough to allow an individual with no experience with our project to pick up and play it. It is acceptable for some puzzles to require guidance or hints, as the tutorial sequence of levels will \textbf{not} be complete. All controls presented to the player should work as expected, free of any noticable bugs, or glitches. Menus should allow for proper flow between the game's scenes, and incomplete or non-functional menus should be marked as such.
+
+  Specifically, the player should be able to perform the following operations:
+
+  \begin{enumerate}
+    \item Launch the game from outside the Unity Editor
+    \item Start the game from the main menu, and enter the puzzle selection scene
+    \item From the puzzle selection scene, the player should be able to choose from a limited set of distinct puzzles that represent a vertical slice of our final game's mechanics
+    \item After selecting a puzzle, the player should be transfered to the puzzle scene.
+    \item In the puzzle scene, the player should be presented with controls relevant to the puzzle selected
     \begin{itemize}
-      \item Input
-      \item Output
-      \item MoveTo/From Register
-      \item Jump
-      \item Conditional Jump
+      \item The instruction set pane shows only the subset of instructions chosen to be available for that puzzle.
+      \item If the puzzle includes Memory Cards, the cards are displayed at the bottom of the screen and are interactible.
+      \item Move and Copy instructions are not playable until at least one Memory card is in play
+      \item Memory cards can be placed on, removed from, and re-odered in the play area.
     \end{itemize}
-    \item Handles logical errors
-    \begin{itemize}
-      \item Conditional Jumps with empty hand
-      \item Move/Copy from empty register
-    \end{itemize}
+  \end{enumerate}
+
+
+  \item Available Puzzles
+  
+  Puzzles 1, 2a, 3, and 5 of the tutorial sequence specified in Section~\textbf{\ref{section:tutorial}}
+
+  \item Available Mechanics
+  \begin{itemize}
+    \item Basic instruction writing
+    
+    Player can click and drag the INPUT, OUTPUT, MOVETO, MOVEFROM, JUMP, and JUMP IF NULL instructions into the instruction pane. Jump instructions allow player to click and drag to set jump anchor.
+
+    \item Basic Memory Card Manipulation
+    
+    Player is presented and can interact with a hand of memory cards on levels that require them. Cards can be played, reorganized, and removed. MOVETO and MOVEFROM instructions are active if and only if there is at least one Memory Card on the board.
+
   \end{itemize}
 \end{itemize}
 
