@@ -5,63 +5,117 @@ separated to come up with ideas as individuals before returning to blend those i
 cohesive whole.
 
 \paragraph{Brandy King}
+Many of my ideas for Computron came from observing players struggle with games like \textit{Human
+Resource Machine}. I focused a lot on the shortcomings of those games; more specifically, I aimed to fill in
+what they were lacking in terms of the accessibility that they provide to inexperienced programmers. 
+Additionally, I wanted the game to feel engaging and rewarding for players, something that is often 
+overlooked in the development of educationally focused video games. \\
+
+\subparagraph{Declaring Variables and Data Structures:}\mbox{} \\
+When we were discussing the scope of the instruction set we wanted for our game, I put forward the idea
+of including a ``declare" instruction that players would use to initialize a variable or data structure for use
+in their solution. This would be tied dynamically to the instructions they are able to use, as some instructions
+are only applicable to these items, like the Move and Copy commands. These commands have a blank field
+that the user has to fill with an available structure, so if they didn't declare the item, they wouldn't be able to
+link it to the command.\\
+
+The hope was that this would reinforce the notion of instantiation of data structures for use in a program. By
+making the player responsible for managing the data structures, it would emphasize how a programmer
+is responsible for declaring and utilizing variables and data structures to handle data within an algorithm. In
+discussing the mechanics of how this would work, it became clear that implementing the declaring functionality
+as a command would be very difficult to do dynamically, so it was adapted to be its own section, separate from
+the solution that the player builds. This way, the variables and data structures could still be handled dynamically,
+both in their declaration and in their attachment to instructions in the solution.\\
+
+\subparagraph{Tutorial Levels:}\mbox{} \\
+It became clear very early on that many of the current game offerings in this arena did a lackluster job of 
+providing a solid introduction to their game. Many of the games escalated in difficulty far too quickly for 
+players new to programming to follow along with. They could complete the first few introductory puzzles,
+but were quickly lost when the game mechanics became more complex or increased in scope. It was evident
+that having a very solid tutorial aspect to our game was vital to our success in conveying concepts.\\
+
+I proposed that we intersperse tutorial levels between puzzles in the flow of the game. We already knew that
+as players progressed through the game they would unlock access to new data structures and commands. As
+soon as a new item was unlocked, a tutorial level would be the next puzzle in the game. This would be a free-play
+level with unlimited input and no determined solution wherein the player could experiment with and explore
+the functionality of their newly unlocked item without the pressure of immediately needing it to solve a puzzle.\\
+
+In order to ``complete" each tutorial level, the player would be required to complete a short to-do list that
+covered the basic concepts of their new command or data structure, after reading a brief description of the function
+and mechanics of what that item does. For example, a Heap tutorial level to-do list would include:
 \begin{itemize}
-  \item Smaller puzzles can be the parts of a larger cohesive piece
-  \begin{itemize}
-    \item The efficiency of a solution can dictate how well each piece works
-    together
-    \item Will reinforce revisiting puzzles that have already been solved to
-    find more efficient solutions (leading to a better solution overall)
-  \end{itemize}
-  \item Variable and Data Structure Declaring
-  \begin{itemize}
-    \item Separate declaration field from the solution space
-    \item Can add or remove variables/structures dynamically
-  \end{itemize}
-  \item Tutorial levels
-  \begin{itemize}
-    \item Explaining new instructions or data structures in a non-puzzle level
-    \item Allow users to “free play” with their available commands and see how
-    things work without the pressure of needing to use them to solve a puzzle
-    \item A “to-do” list with checkboxes of key concepts they need for each
-    command
-    \begin{itemize}
-      \item E.G. A Heap tutorial level “to-do” list would include:
-      \begin{itemize}
-        \item Declare a Heap
-        \item Put five inputs in the Heap
-        \item Remove five inputs from the Heap
-      \end{itemize}
-    \end{itemize}
-    \item The “to-do” list must be completed before the user can progress to the
-    next puzzle, where they will need to utilize the new element in the solution
-  \end{itemize}
-  \item Points-based scoring of solutions
-  \begin{itemize}
-    \item Quantify the solution provided with a ranking
-    \item Informs users on the efficiency of their solution
-  \end{itemize}
-  \item Limiting certain commands
-  \begin{itemize}
-    \item Can’t select to use a data structure space that isn’t declared
-    \item Certain commands will not be applicable to data structures
-    \begin{itemize}
-      \item I.e., data stored in a structure must be removed to be manipulated;
-      cannot arbitrarily add or subtract values stored there
-    \end{itemize}
-    \item Commands with changeable parts will be limited to available locations
-  \end{itemize}
-  \item Indentation within if statements to emphasize scope
-  \begin{itemize}
-    \item Will more clearly define to users which commands are reached within
-    conditionals; especially important when nested conditionals are introduced
-  \end{itemize}
-  \item Instruction “Jumbotron”
-  \begin{itemize}
-    \item An area above the puzzle space that broadcasts which command is being
-    executed at that time
-  \end{itemize}
+	\item Declare a Heap
+	\item Put five inputs in the Heap
+	\item Remove five inputs from the Heap
 \end{itemize}
+As each item on the to-do list is completed, it will be checked off automatically for the player. Once it is fully 
+completed, they can elect to exit the tutorial whenever they are ready and move forward to the next 
+puzzle, which will necessarily utilize the new element in its solution. \\
+
+\subparagraph{Limiting Certain Commands:}\mbox{} \\
+By limiting the capabilities of certain commands, we can better communicate to players the functions of certain
+elements in the game. As previously stated, the Move and Copy commands are only useful in conjunction with a
+variable or data structure. These commands could be in the list of available instructions for a level, but they would be
+dulled out and inaccessible to the user until a proper variable or data structure was declared.\\
+
+Similarly, some commands will not be able to be used with certain data structures. For instance, the Add and Subtract
+commands can be used on variables, but we should not allow players to arbitrarily use Add or Subtract on the
+top element of a Heap, Stack, or Queue. The player would be required to remove that element from the structure,
+manipulate the data, and then put the modified data into the structure. This reinforces the core concepts of how
+these structures are used for storage, and will also encourage players to select the right type of structure depending
+on how they may need to manipulate the data in that level.\\
+
+\subparagraph{Instruction ``Jumbotron":}\mbox{} \\
+In \textit{Human Resource Machine}, as the character is acting out the instructions for the player, there is an indicator
+in the panel containing the player's solution that points to which command is being executed at that time. While this
+is very useful when trying to trace through a solution or debug a problem in the code, it is also a bit too subtle
+and most users that I observed didn't notice it at all, even when they were stepping through their solution one
+command at a time.\\
+
+From this, I got the idea of introducing a ``Jumbotron" element in the User Interface of the puzzle that would
+show up during execution and broadcast which instruction was being executed at that time. My hope was that the
+text of the command the user had in their solution paired with the actions of the Actor on the screen would more
+directly emphasize what action was caused by each instruction. This would, in turn, create an association between 
+the commands and the way they effect the flow of the puzzle, which was something that seemed to be lost to new users
+who were inexperienced at programming.\\
+
+\subparagraph{Indentation Within Conditional Blocks:}\mbox{} \\
+When conditional statements are presented in the games we playtested, there was no indication of which code
+belonged inside of the conditional block or where that block ended. This is because the conditions had to be
+controlled with jump statements. However, for users who are not accustomed to scoping and how code blocks
+work, it is very unclear where exactly a jump statement should go to end a block of code, or even to use a jump
+statement in the first place.\\
+
+Using indentation within conditional blocks provides a much clearer picture to the user of exactly what code belongs
+to which piece of the logic in their solution. This is seen consistently throughout real world programming and coding
+syntax, where indentation and spacing are paramount to the readability of code. By adopting this convention
+in our pseudo-language, we can not only set up players for the way real programming languages are laid out, but
+also communicate to them more clearly the flow of their solution.\\
+
+\subparagraph{Points-Based Scoring of Solutions:}\mbox{} \\
+Making an educational game that people enjoy playing is extremely challenging. It is very important that, in addition
+to being instructive, our game should also be enjoyable. We can foster an early love for Computer Science by 
+creating a game that players want to return to. This can be achieved by implementing game mechanics that the
+player can reference to see how well they are doing.\\
+
+A point-based scoring system is a popular device implemented by many games. Scoring a solution out of three stars,
+for example, clearly indicates to a player how well they solved the puzzle and whether or not there is room for
+improvement. Simple mechanics like this can be a strong motivator for players to return to previously solved levels
+and try a different approach in an attempt to get a better score. Encouraging this second look at a solution will
+stimulate the idea of reevaluating old code and making an effort to improve upon it, especially once new concepts
+have been learned.\\
+
+\subparagraph{Individual Puzzle Solutions Connecting to Solve Larger Puzzles:}\mbox{} \\
+This idea is borrowed from the game \textit{SpaceChem}, which is a game that implements computational thinking
+to solve puzzles. It falls more on the abstract side of the spectrum, but it has a game mechanic where the solution to
+several puzzles is combined together as the input for another puzzle down the line.\\
+
+In relation to our game, my idea was to have individual puzzles be part of a larger puzzle. The efficiency of each
+of the solutions to three smaller puzzles will dictate how well each of those pieces works together, and ultimately
+how well the puzzle that relies on those three pieces can be solved. This could be effectively implemented through
+an overall game theme where each puzzle makes sense to be one component of a larger piece. This idea of nested
+reliance will reinforce motivating players to revist puzzles that they have already solved to find more efficient solutions,
+which can in turn lead to a better solution overall.\\
 
 \paragraph{John Billingham}
 \begin{itemize}
