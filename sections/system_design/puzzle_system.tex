@@ -287,5 +287,43 @@ each card like above.\\
   \centering
   \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Cards.png}
 \end{figure}
+\newpage
 
 \subsubsection{Instructions}
+The puzzle scene tells the instruction editor component of the user interface:
+\begin{itemize}
+  \item Which instructions the player can use for the current level
+  \begin{itemize}
+    \item These will initially appear in the instruction bank.
+  \end{itemize}
+  \item Which instructions were left in the editor during a previous attempt at
+  the puzzle level
+  \begin{itemize}
+    \item These will appear where they were left in the editor previously.
+  \end{itemize}
+\end{itemize}
+
+The puzzle level's JSON file contains the information that the user interface
+needs to present the player with the appropriate instructions for a given puzzle level.
+The puzzle generator reads the JSON data and passes the instruction set off to the user interface
+as shown in Figure \ref{fig:Instruction_Flow}.
+
+\begin{figure}[!hb]
+  \caption{Loading Instruction Set}
+  \label{fig:Instruction_Flow}
+  \centering
+  \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Instruction_Flow.png}
+\end{figure}
+
+The JSON file associated to the puzzle level also tells the user interface which
+instructions were left in the editor (Figure \ref{fig:Instruction_Flow2}). The intial state of the puzzle level leaves the
+editor empty. Otherwise, the editor is populated with the same instructions that were
+left during a previous attempt. This also includes final solutions that actually solved the
+puzzle level.
+
+\begin{figure}[!hb]
+  \caption{Loading Instruction Editor State}
+  \label{fig:Instruction_Flow2}
+  \centering
+  \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Instruction_Flow2.png}
+\end{figure}
