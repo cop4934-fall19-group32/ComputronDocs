@@ -9,6 +9,11 @@
 \usepackage{float}
 \usepackage{longtable}
 
+\usepackage[margin=1in,left=1.5in]{geometry}
+
+% \usepackage{fancyhdr}
+
+
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \def\frontmatter{%
@@ -22,6 +27,8 @@
     \setcounter{page}{1}
     \setcounter{section}{0}
     \renewcommand{\thesection}{\arabic{section}}
+
+    % \pagestyle{fancy}
 }%
 
 \setlength\parindent{0pt}
@@ -34,12 +41,13 @@
   {\small Advisor: Carbone, Tom}
 }
 
-\title{Project Solenodon}
+\title{Computron}
 
 \begin{document}
 
 \frontmatter
 
+% Cover page with title, group number, team members, date, and any other relevant information, such as participating organizations and sponsors.
 \maketitle
 \newpage
 
@@ -48,8 +56,9 @@
 
 \mainmatter
 
+% Executive summary: An administrative and technical abstract, which includes a brief description of the project, the project objectives, and the technical approach. This is page number 1.
 \section{Executive Summary}
-  \input{sections/executive_statement.tex}
+  \input{sections/executive_summary.tex}
 \newpage
 
 \section{Project Overview}

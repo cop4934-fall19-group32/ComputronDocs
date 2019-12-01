@@ -1,7 +1,7 @@
 \\
 \textbf{Level Structure Overview}\\
 
-Each level is based on an input to output format. Given an intitial input, the player
+Each level is based on an input to output format. Given an initial input, the player
 will be expected to use a set of given instructions to manipulate the data to
 match an expected output for the puzzle level they are currently on. If their
 created output matches the expected output for that level, they have passed the level.
@@ -60,7 +60,7 @@ memory location.\\
 
 \textbf{Input}\\
 
-Input is data that is given to you initially. This may include one regsiter or
+Input is data that is given to you initially. This may include one register or
 multiple registers, as shown in Figure \ref{fig:Input_Example}.
 
 \begin{figure}[!hb]
@@ -128,7 +128,7 @@ The notable instructions are as follows:
   \item Jump
 \end{itemize}
 
-Instructions are clikced or dragged from a limited set of given instructions (
+Instructions are clicked or dragged from a limited set of given instructions (
 specific to each level).\\
 
 When the player is ready to test their solution, each instruction will execute
@@ -140,7 +140,7 @@ are okay, but we should strive to avoid having the player feel as if they are le
 syntax. We would also like to avoid confusing the player by giving a limited
 instruction set for each level with thorough explanations for each instruction.\\
 
-Paraneters used in certain instructions (Move, Return, Add, Subtract) are chosen
+Parameters used in certain instructions (Move, Return, Add, Subtract) are chosen
 from a drop down menu, again minimizing the amount of errors the player can create
 on their own. When choosing a colored data structure and an index, only the colors of
 the data structures and their valid indices that are already on the puzzle board
@@ -189,7 +189,7 @@ picking up the data and placing it down.\\
 
 \textbf{Instruction: Return}\\
 
-The return instruction will specify only one arugment: which colored data structure
+The return instruction will specify only one argument: which colored data structure
 to return as output.
 \begin{itemize}
   \item A return instruction is required for every level.
@@ -260,7 +260,7 @@ just overwrite the data similarly to how the move instruction does so.\\
 \textbf{Instruction: Subtract}\\
 
 The subtract instruction works exactly the same as the add instruction above,
-although the difference of the two reigsters is placed into the destination, rather
+although the difference of the two registers is placed into the destination, rather
 than the sum.\\
 
 Figure \ref{fig:Sub_Instruction} shows how the subtract instruction looks in the
