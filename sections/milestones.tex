@@ -167,7 +167,8 @@ all aspects of the project including:
 
 \end{enumerate}
 
-\subsection{Open to Interpretation (Monday, January 10th)}
+
+\subsection{Open to Interpretation (Wednesday, January 15th)}
 
 \subsubsection*{Summary}
 "Open to Interpretation" will mark the project's first Alpha release. In this state, the game should be functional enough to place in front of a playtester with minor developer intervention. All basic game mechanics will be fully functional, and observing gameplay should produce relevant observations for the development team.
@@ -227,7 +228,7 @@ This milestone’s deliverable is a stable Alpha release of our game. The requir
   \end{itemize}
 \end{itemize}
 
-\subsection{Tutorializing (Friday, February 7th)}
+\subsection{Tutorializing (Wednesday, February 12th)}
 
 \subsubsection*{Summary}
 "Tutorializing" will mark the Computron's second Alpha release. For this release, the tutorial system will be greatly expanded to allow for more hands-off playtesting.
@@ -278,68 +279,96 @@ This milestone’s deliverable is another stable Alpha release of our game. The 
   \end{itemize}
 \end{itemize}
 
-\subsection{Advanced Puzzles (Friday, February 28th)}
+\subsection{Breaking Beta (Friday, February 28th)}
 
 \subsubsection*{Summary}
-For this milestone, we would like to expand our memory card system to include
-several fundamental data structures that can allow players to solve increasingly
-complex problems. For our initial offering, we would like to support Stacks,
-Heaps, and Queues.
+"Breaking Beta" is Computron's first Beta release. At this point, the game's minimum viable product should be feature complete, leaving ample time to rework and refine mechanics based on intense playtesting.
 
 \subsubsection*{Deliverables}
-TBD
-
-\subsection{Opening Sequence (Friday, March 20th)}
-
-\subsubsection*{Summary}
-By this milestone, we should have a complete tutorial sequence to our game. This
-will make it appropriate for intense playtesting and refactoring.
-
-\subsubsection*{Deliverables}
-We should be able to deliver an early draft of our puzzle game that includes a
-tutorial sequence, with all the appropriate messaging. A player should be able
-to sit down and complete this sequence \textbf{without any input from developers}.
-This tutorial sequence includes a series of very simple puzzles to orient
-players with the instruction set at their disposal.
-
-A Player from our target demographic should be able to:
-\begin{enumerate}
-  \item Arrive with no prior experience to the game
-  \item Complete all the puzzles in the series without getting frustrated
-  \item After completing the tutorial sequence, be able to make a confident
-  attempt at a more difficult puzzle
-\end{enumerate}
-
-To achieve this we will need:
 \begin{itemize}
-  \item A system for presenting levels in linear fashion (A world map)
-  \item A system for messaging the player in a non-obtrusive way
-  \item In-game accessible documentation for all of our basic instructions
-  \item Robust entity to act out player instructions
+
+  \item Available Puzzles
+  
+  Puzzles 1 through 12 of the tutorial sequence specified in Section~\textbf{\ref{section:tutorial}}
+
+  \item Available Mechanics
   \begin{itemize}
-    \item Animated
-    \item Responsive
-    \item Emotive
-  \end{itemize}
-  \item A somewhat polished User Interface for creating and running puzzle scripts
-  \item A bug-free interpreter
-  \begin{itemize}
-    \item Good luck with that :’(
+    \item Instruction Introductions
+    
+    Messaging should be added to attract the player's attention to new instructions when they are made available. Upon first receipt of a new instruction, the User Interface should display an interactive menu that allows players to unbox their new command.
+
+    \item Instruction Writing
+    
+    In game documentation of how instructions work is available from the puzzle scene
+
+    \item Memory Card Manipulation
+    
+    In game documentation of how a memory card works is available from the puzzle scene
   \end{itemize}
 \end{itemize}
 
-\subsection{Playtesting Results}
+\subsection{FIEA Playtest (Monday, March 2nd)}
 \subsubsection*{Summary}
-After we have a viable set of puzzles, it is very important to get our game in
-front of as many people as possible. This milestone marks the end of our
-playtesting sprint, after which we can plan and make changes to improve the
-player experience.
-\subsubsection*{Deliverables}
-A set of playtesting data, and a list of refactorings we’d like to make to
-improve the game.
+The team's advisor has offered to allow Computron to be playtested by students at the Florida Interactive Entertainnment Acedemy (FIEA). Playtesters from FIEA will span both technical and non-technical roles in game development, and will be able to offer valuable insights. It will be imperative to capture these insights, and use them to guide the final stages of the game's development
 
-\subsection{Final Product}
-\subsubsection*{Summary}
-This is our final milestone, therefore, we should be done with the project.
 \subsubsection*{Deliverables}
-A game that doesn’t suck.
+For this playtest, the team should be able to present a high quality build of the game. Fielding a high quality demo will be very important in allowing the team to gather effective observations from the playtesters. The team should arrive to the playtest with:
+
+\begin{enumerate}
+  \item A stable build of the game
+  \item A set of exit survey questions to track player experience
+  \item Several computers capable of playing the game to allow increased playtesting bandwidth
+\end{enumerate}
+
+After the playtest, the team should compile player feedback and evaluate which parts of the game will need more attention.
+
+\subsection{Quick Math (Friday, March 20th)}
+
+\subsubsection*{Summary}
+"Quick Math" will be the second Beta release of Computron. It will feature an expanded instruction set and new puzzles that make use of mathematical principles. 
+
+\subsubsection*{Deliverables}
+\begin{itemize}
+
+  \item New Instructions
+  Computron should support 4 brand new instructions:
+  \begin{enumerate}
+    \item ADD X
+    \item SUBTRACT X
+    \item BUMP++
+    \item BUMP--
+  \end{enumerate}
+  
+  \item New Puzzles
+  This release should feature 3 new puzzles that exercise the new problem spaces made accessible by the expanded instruction set:
+
+  \begin{enumerate}
+    \item Adding Machine
+    
+    This puzzle should introduce players to the mechanics of the new ADD instruction. Puzzle should ask players to add pairs of numbers in the input and output their sum.
+
+    \item Subractinator
+
+    This puzzle should introduce players to the mechanics of the new SUBTRACT instruction. Puzzle should ask players to subtract pairs of numbers in the input and output their difference.
+
+    \item Hexiplier
+
+    This puzzle should show players an application of the new ADD instruction. For each number in the input, the puzzle should expect that number times 6 as output.
+
+  \end{enumerate}
+
+\end{itemize}
+
+\subsection{Release Candidate (Friday, April 10th)}
+\subsubsection*{Summary}
+Nearing the end of our project, milestone requirements will largely be determined by the state of the game and the results of playtests. For this milestone, the team should have most of the concerns raised from the FIEA playtest fully remedied.
+
+\subsubsection*{Deliverables}
+A fun release candidate of Computron.
+
+\subsection{Mission Accomplished (Wednesday, April 15th)}
+\subsubsection*{Summary}
+"Mission Accomplished" marks the final release of Computron. The project should be in a state that accomplishes the goals set forth in this document.
+
+\subsubsection*{Deliverables}
+A game the team is proud of.
