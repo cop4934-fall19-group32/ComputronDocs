@@ -9,3 +9,4 @@
 *.toc
 *.dvi
 *.synctex*
+.vscode
