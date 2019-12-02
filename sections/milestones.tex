@@ -77,7 +77,7 @@ inform any design changes we make to our prototype.
   \end{itemize}
 \end{itemize}
 
-\subsection{Hello Game (Wednesday, Dec 4th)}
+\subsection{Hello Game (Friday, Dec 13th)}
 
 \subsubsection*{Summary}
 This milestone marks our the delivery of our proof of concept prototype. The teams advisor will evaluate the prototype and provide reccommendations for moving forward. The prototype will show an extremely basic vertical slice of our final game. 
@@ -92,7 +92,7 @@ The only deliverable for this milestone will be the Hello World prototype. This 
 
   \item Game Mechanics
 
-  The foundations of the game's major mechanics should be in place and interactable, and are specified below by scene.
+  The foundations of the game's major mechanics should be in place and interactable. The expected functionalities of the demo are specified below by scene.
   \begin{itemize}
     \item Main Menu
     
@@ -135,7 +135,7 @@ The only deliverable for this milestone will be the Hello World prototype. This 
 \subsection{Waterfall Method (Thursday, December 5th)}
 
 \subsubsection*{Summary}
-This milestone marks the deadline for our Senior Design 1 documentation. The document must be complete, professionally bound, and delivered to HEC-345 by 1:00PM.
+This milestone marks the deadline for Senior Design 1 documentation submission. This document must be complete, professionally bound, and delivered to HEC-345 by 1:00PM.
 
 \subsubsection*{Deliverables}
 As per the requirements of this course, our final design document will describe
@@ -170,7 +170,7 @@ all aspects of the project including:
 \subsection{Open to Interpretation (Monday, January 10th)}
 
 \subsubsection*{Summary}
-"Open to Interpretation" will mark the project's Alpha release. In this state, the game should be functional enough to place in front of a playtester without developer intervention. All basic game mechanics will be fully functional, and observing gameplay should produce relevant observations for the development team.
+"Open to Interpretation" will mark the project's first Alpha release. In this state, the game should be functional enough to place in front of a playtester with minor developer intervention. All basic game mechanics will be fully functional, and observing gameplay should produce relevant observations for the development team.
 
 \subsubsection*{Deliverables}
 This milestone’s deliverable is a stable Alpha release of our game. The requirements of the Alpha release are as follows:
@@ -178,7 +178,7 @@ This milestone’s deliverable is a stable Alpha release of our game. The requir
 \begin{itemize}
   \item Player experience
   
-  The player experience should be polished enough to allow an individual with no experience with our project to pick up and play it. It is acceptable for some puzzles to require guidance or hints, as the tutorial sequence of levels will \textbf{not} be complete. All controls presented to the player should work as expected, free of any noticable bugs, or glitches. Menus should allow for proper flow between the game's scenes, and incomplete or non-functional menus should be marked as such.
+  The player experience should be polished enough to allow an individual with no experience with our project to pick up and play it. All controls presented to the player should work as expected, free of any noticable bugs, or glitches. Menus should allow for proper flow between the game's scenes, and incomplete or non-functional menus should be marked as such.
 
   Specifically, the player should be able to perform the following operations:
 
@@ -190,9 +190,10 @@ This milestone’s deliverable is a stable Alpha release of our game. The requir
     \item In the puzzle scene, the player should be presented with controls relevant to the puzzle selected
     \begin{itemize}
       \item The instruction set pane shows only the subset of instructions chosen to be available for that puzzle.
-      \item If the puzzle includes Memory Cards, the cards are displayed at the bottom of the screen and are interactible.
-      \item Move and Copy instructions are not playable until at least one Memory card is in play
-      \item Memory cards can be placed on, removed from, and re-odered in the play area.
+      \item If the puzzle includes Memory Cards, the cards are displayed at the bottom of the screen and are interactable.
+      \item Move and Copy instructions are not usable until at least one Memory card is in play
+      \item Memory Cards can be placed on, removed from, and re-odered in the play area.
+      \item A Memory Card cannot be removed if it is referenced by an instruction in the solution window. Instructions blocking card removal are highlighted when the player's request fails.
     \end{itemize}
   \end{enumerate}
 
@@ -203,80 +204,79 @@ This milestone’s deliverable is a stable Alpha release of our game. The requir
 
   \item Available Mechanics
   \begin{itemize}
+    \item Level Selection
+    
+    The level selection scene allows players to chose which puzzle they'd like to attempt. Chosing a level should transfer the player to the Puzzle Scene with the relevant puzzle data loaded. The player will not be restricted in which puzzles are available, or which order they chose to complete them.
+
     \item Basic instruction writing
     
-    Player can click and drag the INPUT, OUTPUT, MOVETO, MOVEFROM, JUMP, and JUMP IF NULL instructions into the instruction pane. Jump instructions allow player to click and drag to set jump anchor.
+    Player can click and drag the INPUT, OUTPUT, MOVETO, MOVEFROM, JUMP, and JUMP IF NULL instructions into the instruction pane. Jump instructions allow player to click-and-drag to set jump anchor.
 
     \item Basic Memory Card Manipulation
     
     Player is presented and can interact with a hand of memory cards on levels that require them. Cards can be played, reorganized, and removed. MOVETO and MOVEFROM instructions are active if and only if there is at least one Memory Card on the board.
 
+    \item Basic Solution Grading
+    
+    After a player completes a puzzle, they are presented with a score sheet that provides metrics on the par for:
+    \begin{itemize}
+      \item Instruction count
+      \item Solution Runtime
+      \item Memory Card cost
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
-\subsection{Turing Complete (Friday, February 7th)}
+\subsection{Tutorializing (Friday, February 7th)}
 
 \subsubsection*{Summary}
-For the previous milestone we laid the foundations for our most important
-instructions. For this milestone, we should have these fundamental instructions
-in a highly polished state. This includes all the messaging necessary to
-indicate the operations being performed, and well as robust error handling and
-reporting.
+"Tutorializing" will mark the Computron's second Alpha release. For this release, the tutorial system will be greatly expanded to allow for more hands-off playtesting.
 
 \subsubsection*{Deliverables}
-A polished demo that demonstrates the most fundamental instructions of our game.
-The requirements for each instruction are listed below:
+This milestone’s deliverable is another stable Alpha release of our game. The expected new features are listed below:
 
 \begin{itemize}
-  \item Input
+
+  \item Available Puzzles
+  
+  Puzzles 1 through 9 of the tutorial sequence specified in Section~\textbf{\ref{section:tutorial}}
+
+  \item Available Mechanics
   \begin{itemize}
-    \item When the input command is executed, the Actor should travel to and
-    grab data from the input bin.
-    \item The input bin should react to having an input extracted
-    \item The Actor should display the item it picked up
-  \end{itemize}
-  \item Output
-  \begin{itemize}
-    \item When this command is executed, the Actor should travel to the output box
-    and drop the item in its hands
-    \item If the actor’s hands are empty, the program should terminate and alert
-    the player
+    \item Level Selection
+    The level selection menu should meet the following requirements:
     \begin{itemize}
-      \item This requires the actor to emote in response to the error
-      \item The user interface should draw the player’s attention to the issue
+      \item Level selection menu supports a strong ordering of tutorial levels
+      \item Level selection menu allows for optional paths that do not impede player progression
+      \item The player's performace on puzzles (number of stars) should be recorded and restored between play sessions.
+      \item Advanced levels should be restricted from play until the player earns the resequite number of points to unlock them.
     \end{itemize}
-  \end{itemize}
-  \item Unconditional Jumps
-  \begin{itemize}
-    \item Unconditional Jumps should properly work properly.
-    \item The user should be able to easily create loops
-    \item The user should be able to easily skip instructions
-  \end{itemize}
-  \item Conditional Jumps
-  \begin{itemize}
-    \item Conditional jumps should have all the proper messaging to indicate
-    their function
-    \item If the actor’s hands are empty, the program should terminate and alert
-    the player
-    \begin{itemize}
-      \item This requires the actor to emote in response to the error
-      \item The user interface should draw the player’s attention to the issue
-    \end{itemize}
-  \end{itemize}
-  \item Register Manipulation
-  \begin{itemize}
-    \item Players should be able to play register memory cards before running
-    their solution, and see their instructions place and remove items from those
-    registers.
-    \item If the player performs an invalid instruction pertaining to register
-    manipulation, the program should terminate and alert the player
-    \begin{itemize}
-      \item The actor should emote to signal the error
-      \item The UI should draw attention to the error
-    \end{itemize}
+
+    \item Instruction Writing
+    
+    The puzzle writing and interpreting system should support the following instructions:
+
+    \begin{enumerate}
+      \item INPUT
+      \item OUTPUT
+      \item JUMP
+      \item JUMP IF NULL
+      \item JUMP IF LESS
+      \item JUMP IF GREATER
+      \item MOVETO X
+      \item MOVEFROM x
+    \end{enumerate}
+
+    \item Memory Card Manipulation
+    
+    Player memory card interactions should be well polished. Players should find playing and removing cards an intuitive part of the puzzle solving process. In addition, the following cards should be operational:
+
+    \begin{enumerate}
+      \item Register
+      \item Stack
+    \end{enumerate}
   \end{itemize}
 \end{itemize}
-
 
 \subsection{Advanced Puzzles (Friday, February 28th)}
 
