@@ -22,7 +22,7 @@ Import components of this prototype include:
 The puzzle game will rely on a color-based memory indexing system to access and
 manipulate game data. Colors will be used when accessing data structure indices,
 although this only applies to registers for now. Two basic blue and red registers
-can be see in Figure \ref{fig:Register_Examples}.
+can be seen in Figure \ref{fig:Register_Examples}.
 
 \begin{figure}[!hb]
   \caption{Register Examples}
@@ -54,14 +54,14 @@ data structure (redundant for now, since registers only get one index).
   \includegraphics[scale=0.6]{JB_Prototype_Register_Indexing.png}
 \end{figure}
 
-From now on, these data structures of size 1, that only contains the index 0, will
-be referred to as registers. A specific register and it's index is said to be a
+From now on, these data structures of size 1, that only contain the index 0, will
+be referred to as registers. A specific register and its index is said to be a
 memory location.\\
 
 \textbf{Input}\\
 
 Input is data that is given to you initially. This may include one register or
-multiple registers, as shown in Figure \ref{fig:Input_Example}.
+multiple registers, as shown in Figure \ref{fig:Input_Example}.\\
 
 \begin{figure}[!hb]
   \caption{Input Examples}
@@ -128,8 +128,8 @@ The notable instructions are as follows:
   \item Jump
 \end{itemize}
 
-Instructions are clicked or dragged from a limited set of given instructions (
-specific to each level).\\
+Instructions are clicked or dragged from a limited set of given instructions, 
+specific to each level.\\
 
 When the player is ready to test their solution, each instruction will execute
 procedurally from top to bottom.\\
@@ -149,13 +149,13 @@ are given as options in the drop down menu.\\
 
 \textbf{Instruction: Move}\\
 
-The move instruction takes two arguments: a source register and a destination register.
+The move instruction takes two arguments, a source register and a destination register.
 It's main functionality consists of three different parts:
 
 \begin{itemize}
-  \item Moves the contents of the source to the destination.
-  \item Leaves the contents of the source unchanged.
-  \item Overrides whatever could have been in the destination previously.
+  \item Move the contents of the source to the destination
+  \item Leave the contents of the source unchanged
+  \item Override the previous contents of the destination
 \end{itemize}
 
 How the instruction would look in the instruction editor is shown in Figure
@@ -189,13 +189,13 @@ picking up the data and placing it down.\\
 
 \textbf{Instruction: Return}\\
 
-The return instruction will specify only one argument: which colored data structure
+The return instruction will specify only one argument -- which colored data structure
 to return as output.
 \begin{itemize}
-  \item A return instruction is required for every level.
-  \item May be given, or may ask the player to write it.
+  \item A return instruction is required for every level
+  \item May be given, or may require the player to write it
   \item The data structure that is returned is compared against the expected
-  output for the level.
+  output for the level
 \end{itemize}
 
 Figure \ref{fig:Return_Instruction} shows how the return instruction looks in the instruction editor.
@@ -227,7 +227,7 @@ we can show the correct usage of the return instruction in Figure \ref{fig:Retur
 The add instruction takes three arguments:
 \begin{itemize}
   \item Two memory locations to be added
-  \item The destination of their sum (another memory location)
+  \item The destination of their sum, another memory location
 \end{itemize}
 
 Figure \ref{fig:Add_Instruction} shows how the add instruction looks in the
@@ -240,8 +240,8 @@ instruction editor.
   \includegraphics[scale=0.8]{JB_Prototype_Add.png}
 \end{figure}
 
-When referencing the memory locations, an index must also be specified (like we've
-seen before). Figure \ref{fig:Add_Instruction_Use} shows the add instruction in use by displaying
+When referencing the memory locations, an index must also be specified, as we've
+seen before. Figure \ref{fig:Add_Instruction_Use} shows the add instruction in use by displaying
 the contents of the registers included in the instruction before and after it is
 run.
 
@@ -254,7 +254,7 @@ run.
 
 Note:\\
 The destination can be one of the source registers used, in which case it would
-just overwrite the data similarly to how the move instruction does so.\\
+just overwrite the data, similarly to how the move instruction functions.\\
 \newpage
 
 \textbf{Instruction: Subtract}\\
@@ -278,7 +278,7 @@ instruction editor.
 The jump instruction is paired with an anchor. When a jump instruction is executed,
 the flow of control immediately jumps to the instruction that lays at the anchor.\\
 
-It is up to the user to choose where the anchor will lie, after placing a Jump instruction
+It is up to the user to choose where the anchor will lie after placing a Jump instruction
 in the instruction editor.\\
 
 Figure \ref{fig:Jump_Instruction} shows how the jump instruction looks in the
