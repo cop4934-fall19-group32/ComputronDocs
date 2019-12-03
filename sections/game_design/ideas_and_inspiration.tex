@@ -3,14 +3,15 @@ to avoid a herd mentality when discussing possible game mechanics, themes, and d
 separated to come up with ideas as individuals before returning to blend those ideas together into a more
 cohesive whole.
 
-\subsubsection{Brandy King}\mbox{} \\
+
+\subsubsection{Brandy King}
 Many of my ideas for Computron came from observing players struggle with games like \textit{Human
 Resource Machine}. I focused a lot on the shortcomings of those games; more specifically, I aimed to fill in
 what they were lacking in terms of the accessibility that they provide to inexperienced programmers.
 Additionally, I wanted the game to feel engaging and rewarding for players, something that is often
 overlooked in the development of educationally focused video games. \\
 
-\paragraph{Declaring Variables and Data Structures:}\mbox{} \\
+\paragraph{Declaring Variables and Data Structures:} ~\\
 When we were discussing the scope of the instruction set we wanted for our game, I put forward the idea
 of including a ``declare" instruction that players would use to initialize a variable or data structure for use
 in their solution. This would be tied dynamically to the instructions they are able to use, as some instructions
@@ -26,7 +27,7 @@ as a command would be very difficult to do dynamically, so it was adapted to be 
 the solution that the player builds. This way, the variables and data structures could still be handled dynamically,
 both in their declaration and in their attachment to instructions in the solution.\\
 
-\paragraph{Tutorial Levels:}\mbox{} \\
+\paragraph{Tutorial Levels:} ~\\
 It became clear very early on that many of the current game offerings in this arena did a lackluster job of
 providing a solid introduction to their game. Many of the games escalated in difficulty far too quickly for
 players new to programming to follow along with. They could complete the first few introductory puzzles,
@@ -51,7 +52,7 @@ As each item on the to-do list is completed, it will be checked off automaticall
 completed, they can elect to exit the tutorial whenever they are ready and move forward to the next
 puzzle, which will necessarily utilize the new element in its solution. \\
 
-\paragraph{Limiting Certain Commands:}\mbox{} \\
+\paragraph{Limiting Certain Commands:} ~\\
 By limiting the capabilities of certain commands, we can better communicate to players the functions of certain
 elements in the game. As previously stated, the Move and Copy commands are only useful in conjunction with a
 variable or data structure. These commands could be in the list of available instructions for a level, but they would be
@@ -64,7 +65,7 @@ manipulate the data, and then put the modified data into the structure. This rei
 these structures are used for storage, and will also encourage players to select the right type of structure depending
 on how they may need to manipulate the data in that level.\\
 
-\paragraph{Instruction ``Jumbotron":}\mbox{} \\
+\paragraph{Instruction ``Jumbotron":} ~\\
 In \textit{Human Resource Machine}, as the character is acting out the instructions for the player, there is an indicator
 in the panel containing the player's solution that points to which command is being executed at that time. While this
 is very useful when trying to trace through a solution or debug a problem in the code, it is also a bit too subtle
@@ -78,7 +79,7 @@ directly emphasize what action was caused by each instruction. This would, in tu
 the commands and the way they effect the flow of the puzzle, which was something that seemed to be lost to new users
 who were inexperienced at programming.\\
 
-\paragraph{Indentation Within Conditional Blocks:}\mbox{} \\
+\paragraph{Indentation Within Conditional Blocks:} ~\\
 When conditional statements are presented in the games we playtested, there was no indication of which code
 belonged inside of the conditional block or where that block ended. This is because the conditions had to be
 controlled with jump statements. However, for users who are not accustomed to scoping and how code blocks
@@ -91,7 +92,7 @@ syntax, where indentation and spacing are paramount to the readability of code. 
 in our pseudo-language, we can not only set up players for the way real programming languages are laid out, but
 also communicate to them more clearly the flow of their solution.\\
 
-\paragraph{Points-Based Scoring of Solutions:}\mbox{} \\
+\paragraph{Points-Based Scoring of Solutions:} ~\\
 Making an educational game that people enjoy playing is extremely challenging. It is very important that, in addition
 to being instructive, our game should also be enjoyable. We can foster an early love for Computer Science by
 creating a game that players want to return to. This can be achieved by implementing game mechanics that the
@@ -104,7 +105,7 @@ and try a different approach in an attempt to get a better score. Encouraging th
 stimulate the idea of reevaluating old code and making an effort to improve upon it, especially once new concepts
 have been learned.\\
 
-\paragraph{Individual Puzzle Solutions Connecting to Solve Larger Puzzles:}\mbox{} \\
+\paragraph{Individual Puzzle Solutions Connecting to Solve Larger Puzzles:} ~\\
 This idea is borrowed from the game \textit{SpaceChem}, which is a game that implements computational thinking
 to solve puzzles. It falls more on the abstract side of the spectrum, but it has a game mechanic where the solution to
 several puzzles is combined together as the input for another puzzle down the line.\\
@@ -116,8 +117,10 @@ an overall game theme where each puzzle makes sense to be one component of a lar
 reliance will reinforce motivating players to revisit puzzles that they have already solved to find more efficient solutions,
 which can in turn lead to a better solution overall.\\
 
-\subsubsection{John Billingham}\mbox{} \\
-\paragraph{Abstracting Conditional Jumps:}\mbox{} \\
+
+
+\subsubsection{John Billingham}
+\paragraph{Abstracting Conditional Jumps:} ~\\
 Conditional jumps run the possibility of bringing complex logic that may overwhelm
 or confuse the player. While our instruction set is similar to assembly, we would like
 to minimize the complexity that is associated with assembly logic. One way that traditional
@@ -133,7 +136,7 @@ instructions that the player has access to can solve this problem. We can also j
 limit the number of nests that we allow with conditional logic. It is important that we
 do not create more complexities while trying to remove some here.\\
 
-\paragraph{Jump Instructions as a Resource:}\mbox{} \\
+\paragraph{Jump Instructions as a Resource:} ~\\
 Distributing jump instructions as a finite resource can enforce the idea of runtime
 efficiency for those who play the game. The more jumps a player uses, especially those
 that are not necessarily needed, may slow a player's solution down. A puzzle level may
@@ -145,7 +148,7 @@ A reward system could also be introduced as a means to enforce these concepts. P
 faster solutions (fewer steps/instructions executed) could gain some sort of point based
 score that maybe allows them to unlock more levels down the road.\\
 
-\paragraph{Data Structures}\mbox{} \\
+\paragraph{Data Structures:} ~\\
 Our initial inspirations and ideas for this game only contain one data structure that is
 used on the game board: registers. Items can be placed in and taken out of these register and that
 is it. Registers support two basic functionalities:
@@ -188,7 +191,7 @@ Puzzle levels that were solved using a naive solution earlier on may be able to 
 optimized at a later date after certain data structures have been introduced. We can
 structure our puzzle level progression system to take this into account.\\
 
-\paragraph{Atomic Move instructions:}\mbox{} \\
+\paragraph{Atomic Move instructions:} ~\\
 Having the actor pick up an item and place it down as two separate instructions
 makes our instruction set feel too much like assembly code. Replacing this with one
 atomic move instruction abstracts these two commands, making it simpler for the player
@@ -204,7 +207,7 @@ it to the destination specified by the instruction. This also makes our instruct
 more like orders for our actor to follow rather than a straight controlling of the actor's
 every move.\\
 
-\paragraph{Add/Subtract specificities:}\mbox{} \\
+\paragraph{Add/Subtract specificities:} ~\\
 Add and subtract instructions would work very similarly to the move instruction
 mentioned above. Two source register would be specified, either to be summed or differenced,
 as well as a destination, where the sum or difference is placed.\\
@@ -213,7 +216,7 @@ The actor does the animation work of adding or subtracting data and moving it to
 location. This again removes additional logic that the player has to think through when
 solving a puzzle.\\
 
-\paragraph{Color-based indexing system}\mbox{} \\
+\paragraph{Color-based indexing system:} ~\\
 The player accesses instructions through a color-based indexing system.
 Colors represent specific data structures on the game board, while indices represent
 specific locations within a colored data structure. "Green sub 3" would indicate the
@@ -225,19 +228,19 @@ different places in memory. We would conventionally use a variable and an index 
 certain data structures, but the variable is replaced by a uniquely colored visualization
 of a data structure.\\
 
-\paragraph{Return instruction}\mbox{} \\
+\paragraph{Return instruction:} ~\\
 Allow the user to choose a data structure to return as their output. The
 contents of the data structure are checked against the expected output for the
 puzzle level. The player chooses the data structure they wish to return by choosing
 that data structure's color in the output game object.\\
 
-\paragraph{Debugging levels}\mbox{} \\
+\paragraph{Debugging levels:} ~\\
 The player can step back and forth through their solution, one instruction at a time,
 and the actor should support these operations to show a visual debugging process. This
 visual control can help players find problems within their solution, allowing them to
 progressively reach the end of puzzle level.\\
 
-\paragraph{Broken solution given initially}\mbox{} \\
+\paragraph{Broken solution given initially:} ~\\
 Player must fix a broken solution that is given when the puzzle level starts.
 Can be used in conjunction with tutorials to teach new concepts. This enforces the functionality
 of certain data structures by having the player interact with a broken data structure being
@@ -247,27 +250,28 @@ If a player has messed with and fixed a broken data structure prior to using it 
 their future solutions, our hope is that their ability to use this data structure and think in
 terms of this data structure when building a solution will be increased.\\
 
-\subsubsection{Nicolas LaCognata}\mbox{} \\
+
+
+\subsubsection{Nicolas LaCognata}
 My biggest inspiration for this project was \textit{Human Resource Machine} by the Tomorrow Corporation.
 \textit{Human Resource Machine} is a charming little puzzle game that tackles the problem we settled on solving,
 the gamification of computational thinking. I love the game, and find it highly engaging. However, playtests
 with non-programmers clearly demonstrated the games shortcomings when dealing with its target audience.
 
-\paragraph{Basic Mechanics:}\mbox{} \\
+\paragraph{Basic Mechanics:} ~\\
 When brainstorming the basic mechanics of our game, my mind continually strayed towards \textit{Human Resource Machine}.
 Through playing the game, and watching others play it, it became clear that Tomorrow Corporation's decision to stick with
 an assembly-like instruction set was an extremely effective mechanic.\\
 
 The assembly like instructions were simple enough for non-programmers to understand, and easy to compose together to make more
-advanced puzzles and solutions. Even at the risk of having our game appear as a rip-off, I thought it would be wise to adapt
-these mechanics.
+advanced puzzles and solutions. Even at the risk of having our game appear as a rip-off, I thought it would be wise to adapt these mechanics.
 
-\paragraph{Data Structures:}\mbox{} \\
+\paragraph{Data Structures:} ~\\
 After surveying many games in the problem space, we failed to find an example of a game that tackles computational thinking
 with the aid of Data Structures. Data Structures are such a fundamental part of being a programmer, that their omission in these
 games seemed incorrect.
 
-\paragraph{Card Game Mechanics:}\mbox{} \\
+\paragraph{Card Game Mechanics:} ~\\
 During our prototyping sessions, I came up with the idea of “Memory Cards”.
 These memory cards would allow the player to declare register locations and data
 structures before their program starts running. Making the mechanics of placing these
@@ -283,78 +287,63 @@ card game mechanics, we realized that having that little unboxing moment when in
 instructions to the player could be highly compelling. Other games in our problem space often
 silently drop new instructions on the player as they progress. By making the new instructions
 appear as a reward, we can ensure that the new mechanic being introduced gets the appropriate
-attention from the player.
+attention from the player. \\
+
+
+
 
 \subsubsection{Sean Simonian}
-\begin{itemize}
-  \item Static commands and restricted dynamic commands
-  \begin{itemize}
-    \item Certain commands in the language should be static, such as “Read
-    Input”
-    \item Certain commands in the language should have components that can be
-    selected from drop down menus, such as “Jump if (blank) (blank) (blank)”
-    \begin{itemize}
-      \item This command would have 3 sections to specify, so the user could
-      specify this command to be “Jump if x > 0”
-    \end{itemize}
-  \end{itemize}
-  \item Break more complex challenges into multiple steps that get checked along
-  the way.
-  \begin{itemize}
-    \item User would have instructions to complete one step of the complete
-    level challenge at a time, run their solution, and if they pass then they
-    move onto the next step, etc., until they work up to the solution.
-    \item This would help players grasp more complex concepts that would be
-    harder to teach as a single challenge that they have to break down on their
-    own.
-    \item Example: Merge Sort algorithm
-    \begin{itemize}
-      \item Step 1: split an array in half
-      \item Step 2: split an array in half recursively
-      \item Step 3: compare 2 of the sub arrays and swap them if necessary
-      \item Step 4: recursively compare and swap sub arrays to build back up to
-      the full sorted array
-    \end{itemize}
-  \end{itemize}
-  \item For testing the educational efficacy of the game, we could create a set
-  of short questions to be done on paper that require computational thinking.
-  Before a test subject plays our game, we have them work through a few of the
-  questions. Then after the test subject plays our game, we have them work
-  through a few more questions from the set. Compare the results to see if they
-  indicate whether our game helps users with computational thinking and problem
-  solving.
-  \item For testing the educational efficacy of the game, conducting official
-  tests through the UCF psych department would be very beneficial if we are able
-  to do so.
-  \begin{itemize}
-    \item Students taking courses such as Intro to Psychology are required to
-    spend a certain number of hours as a test subject as part of their course
-    grade. They use SONA to view available tests and sign up for a time slot,
-    and the experiments that involve playing video games tend to fill up very
-    quickly.
-    \item Since Intro to Psychology is a general education course, many subjects
-    are freshman, and the majority are not studying computer science or similar
-    majors. This could provide an abundant set of candidates that match our
-    target audience.
-    \item We have to figure out who to contact if we want to set this up for
-    next semester.
-    \item The UCF psychology department may only allow these official tests to
-    be set up and run by psych majors and/or psych graduate students doing
-    research. If this is the case, we could look for a grad student conducting
-    educational research who would be interested in “sponsoring” these official
-    tests.
-  \end{itemize}
-  \item Incorporate basic cyber security and cryptography concepts into additional
-  challenges/puzzles.
-  \begin{itemize}
-    \item This was a goal early on, but the current design for the game
-    mechanics would make this difficult to add to the game.
-  \end{itemize}
-  \item Initial ideas for computer science concepts to teach. As we narrowed
-  down the specifications for our game, these ideas were thrown out as they will
-  not fit in the game at all
-  \begin{itemize}
-    \item Artificial intelligence, neural networks, machine learning
-    \item Blockchain technology and its applications
-  \end{itemize}
-\end{itemize}
+
+Much of my inspiration for creating this game comes from my experiences of being in the positions of struggling greatly with introductory computer science concepts, to later tutoring beginner computer science students.
+Considering common issues that beginners struggle with, as well as feedback and observations from nontechnical students playtesting our game prototypes, serves as the strongest indicator of how we need to design our product in order best serve our target audience.
+Like the other team members, I drew inspiration from a few games that share a similar goals or mechanics as what we envisioned for our game, such as \textit{Human Resource Machine}.
+As someone with less fondness and experience with the video game industry, I also spent some time focusing on the broader idea of creating a tool to benefit students learning computer science concepts, and I explored ways to pivot the basis for how we could create such a tool.
+Having real-world experience and passion for both software development and cyber security has greatly influenced my goals for our final product, and I hope to tie some of these concepts together in an encouraging manner for our final product.
+
+\todo{Elaborate on the following paragraphs}
+
+\paragraph{Static vs Dynamic Commands:} ~\\
+Certain commands in the language should be static, such as “Read Input”
+Certain commands in the language should have components that can be selected from drop down menus, such as “Jump if (blank) (blank) (blank)”
+  This command would have 3 sections to specify, so the user could specify this command to be “Jump if x > 0”
+
+
+\paragraph{Puzzle Checkpoints:} ~\\
+Break more complex challenges into multiple steps that get checked along the way.
+User would have instructions to complete one step of the complete level challenge at a time, run their solution, and if they pass then they move onto the next step, etc., until they work up to the solution.
+This would help players grasp more complex concepts that would be harder to teach as a single challenge that they have to break down on their own.
+Example: Merge Sort algorithm
+  Step 1: split an array in half
+  Step 2: split an array in half recursively
+  Step 3: compare 2 of the sub arrays and swap them if necessary
+  Step 4: recursively compare and swap sub arrays to build back up to the full sorted array
+
+
+\paragraph{:} ~\\
+For testing the educational efficacy of the game, we could create a set of short questions to be done on paper that require computational thinking.
+Before a test subject plays our game, have them work through a few of the questions.
+After test subject plays our game, have them work through a few more questions from the set.
+Compare the results to see if they indicate whether our game helps users with computational thinking and problem solving.
+
+
+
+\paragraph{:} ~\\
+For testing the educational efficacy of the game, conducting official tests through the UCF psych department would be very beneficial if we are able to do so.
+Students taking courses such as Intro to Psychology are required to spend a certain number of hours as a test subject as part of their course grade. They use SONA to view available tests and sign up for a time slot, and the experiments that involve playing video games tend to fill up very quickly.
+Since Intro to Psychology is a general education course, many subjects are freshman, and the majority are not studying computer science or similar majors. This could provide an abundant set of candidates that match our target audience.
+We have to figure out who to contact if we want to set this up for next semester.
+The UCF psychology department may only allow these official tests to be set up and run by psych majors and/or psych graduate students doing research. If this is the case, we could look for a grad student conducting educational research who would be interested in “sponsoring” these official tests.
+
+
+
+\paragraph{:} ~\\
+Incorporate basic cyber security and cryptography concepts into additional challenges/puzzles.
+% This was a goal early on, but the current design for the game mechanics may not work well for this.
+
+\paragraph{:} ~\\
+Initial ideas for other possible computer science concepts to teach. After narrowing down the specifications for our game, these ideas were thrown out as they will not fit in the game at all.
+Artificial intelligence, neural networks, machine learning
+Blockchain technology and its applications
+
+
+
