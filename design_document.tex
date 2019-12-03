@@ -10,6 +10,9 @@
 \usepackage{longtable}
 \usepackage{enumitem}
 
+% hyperref package makes the table of contents clickable to jump to a section
+\usepackage{hyperref}
+
 % document settings
 \usepackage[margin=1in,left=1.5in]{geometry}
 \linespread{1.2}
@@ -18,7 +21,7 @@
 \setlist[enumerate]{parsep=0pt}
 \renewcommand*\contentsname{Table of Contents}
 
-% \usepackage{fancyhdr}
+\usepackage{fancyhdr}
 
 
 \newcommand\todo[1]{\textcolor{red}{#1}}
@@ -35,7 +38,7 @@
     \setcounter{section}{0}
     \renewcommand{\thesection}{\arabic{section}}
 
-    % \pagestyle{fancy}
+    \pagestyle{fancy}
 }%
 
 \setlength\parindent{0pt}
@@ -56,6 +59,11 @@
 
 % Cover page with title, group number, team members, date, and any other relevant information, such as participating organizations and sponsors.
 \maketitle
+
+\begin{center}
+  Group 32
+\end{center}
+
 \newpage
 
 {
