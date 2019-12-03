@@ -117,41 +117,113 @@ reliance will reinforce motivating players to revist puzzles that they have alre
 which can in turn lead to a better solution overall.\\
 
 \subsubsection{John Billingham}\mbox{} \\
-\paragraph{Abstracting conditional jumps with more conventional IF/ELSE statements:}\mbox{} \\
-Instructions can be nested under condional statements. This is meant to
-cause less confusion and more visual aid to a player who may not be familiar
-with the idea of jumping to another place in the instructions. We must be careful
-and not allow the player to create complex nested logic by limiting the number
-of conditional instructions they can use.\\
+\paragraph{Abstracting Conditional Jumps:}\mbox{} \\
+Conditional jumps run the possibility of bringing complex logic that may overwhelm
+or confuse the player. While our instruction set is similar to assembly, we would like
+to mimimize the complexity that is associated with assemply logic. One way that traditional
+higher level programming languages achieve this is by introducing nested if/else conditional
+statements.\\
 
-\paragraph{Counter that shows how many jumps have been used:}\mbox{} \\
-This could enforce the idea of runtime complexity. More jumps means more
-looping which could slow down a player's solution. A reward system could also
-be introduced that awards points based on how fast the solution was. Jump
-instructions could be given as a finite resource to also enforce and teach the
-idea of runtime efficiency.\\
+These are essentially the same thing as a conditional jump. A statement is evaluated to
+true or false and the flow of logic (the next instruction to be executed nad those after)
+depends on this produced boolean value. Nested if/else blocks make this flow of logic
+far more visually appealing. We must be careful though, by not allowing the player to create
+additional complexities with confusing nested logic. Limiting the number of conditional
+instructions that the player has access to can solve this problem. We can also just blatantly
+limit the number of nests that we allow with conditional logic. It is important that we
+do not create more complexities while trying to remove some here.\\
 
-\paragraph{Data Structures as Input/Output:}\mbox{} \\
-Arrays, Stack, Heaps, Queues etc.Different data structures are unlocked as the puzzle complexity increases.
-A differnt instruction set is associated with each data structure, abstracting
-some of the earlier instructions as the puzzle's progress.\\
+\paragraph{Jump Instructions as a Resource:}\mbox{} \\
+Distributing jump instructions as a finite resource can enfore the idea of runtime
+efficiency for those who play the game. The more jumps a player uses, especially those
+that are not necessarily needed, may slow a player's solution down. A puzzle level may
+be able to be solved in 10 different ways, but maybe there is a solution that is the fastest
+and most efficient in terms of runtime and space.\\
 
-\paragraph{Atomic move instructions:}\mbox{} \\
-Replacing need for an actor to pick up and place down data  in different places by combing those into
-one atomic "Move" instruction. This is meant to simplify things for the player by keeping
-the previous functionality but removing an unneeded intermediate step of work. Data would have
-a source and a destination when using this instruction, without needing to go through
-the original actor mechanism.\\
+We can push players towards the efficient solution by distributing jump instructions scarcely.
+A reward system could also be introduced as a means to enforce these concepts. Players with
+faster solutions (fewer steps/instructions executed) could gain some sort of point based
+score that maybe allows them to unlock more levels down the road.\\
+
+\paragraph{Data Structures}\mbox{} \\
+Our initial inspirations and ideas for this game only contain one data structure that is
+used on the game board: registers. Items can be placed in and taken out of these register and that
+is it. Registers support two basic functionalities:
+\begin{itemize}
+  \item Item goes in register
+  \item Item goes out of register
+\end{itemize}
+
+Computer Science relies on many other equally important data structures like stacks,
+queues, and heaps. Rather than use just registers as components that players can use on
+the game board to solve a puzzle, we can bring in other structures that allow them to
+optimize their solution even further. This would really drive in some core Computer Science
+material, something that most educational games of this genre fail to do.\\
+
+These data structures were specifically mentioned because they also
+all support two main functionalities like the registers above...\\
+
+Stacks:
+\begin{itemize}
+  \item Push
+  \item Pop
+\end{itemize}
+
+Queues:
+\begin{itemize}
+  \item Enqueue
+  \item Dequeue
+\end{itemize}
+
+Heaps:
+\begin{itemize}
+  \item Insert
+  \item Delete
+\end{itemize}
+
+Limiting data structures to this same input/output type of mechanisms allows our
+actor to easily interact and communicate with these new game components.\\
+
+Puzzle levels that were solved using a naive solution earlier on may be able to be
+optimized at a later date after certain data structures have been introduced. We can
+structure our puzzle level progression system to take this into account.\\
+
+\paragraph{Atomic Move instructions:}\mbox{} \\
+Having the actor pick up an item and place it down as two separate instructions
+makes our instruction set feel too much like assembly code. Replacing this with one
+atomic move instruction abstracts these two commands, making it simpler for the player
+to understand it's use.\\
+
+The previous functionality is preserved but the steps that a player has to take to achieve
+such is reduced. This should help players solve levels faster by removing an unneeded
+intermediate step of work.\\
+
+The move instruction would contain two parameters: a source and a destination. When the
+instruction is executed, the actor moves to the source, picks up the data located there, and moves
+it to the destination specified by the instruction. This also makes our instruction set seem
+more like orders for our actor to follow rather than a straight controlling of the actor's
+every move.\\
 
 \paragraph{Add/Subtract specificities:}\mbox{} \\
-Drop-down menus that allow you to choose two source locations to sum, and
-a destination. This is also meant to simplify the instructions for the player.\\
+Add and subtract instructions would work very similarly to the move instruction
+mentioned above. Two source register would be specified, either to be summed or differenced,
+as well as a destination, where the sum or difference is placed.\\
+
+The actor does the animation work of adding or subtracting data and moving it to the correct
+location. This again removes additional logic that the player has to think through when
+solving a puzzle.\\
 
 \paragraph{Color-based indexing system}\mbox{} \\
 The player accesses instructions through a color-based indexing system.
 Colors represent specific data structures on the game board, while indices represent
 specific locations within a colored data structure. "Green sub 3" would indicate the
 3rd index within the green data structure.\\
+
+This is meant to give the player more control over the locations that exist on the
+game board. It is also meant to drive Computer Science concepts of indexing and accessing
+different places in memory. We would conventionally use a variable and an index to access
+certain data structures, but the variable is replaced by a uniquely colored visualization
+of a data structure.\\
 
 \paragraph{Return instruction}\mbox{} \\
 Allow the user to choose a data structure to return as their output. The
@@ -167,9 +239,13 @@ progressively reach the end of puzzle level.\\
 
 \paragraph{Broken solution given initially}\mbox{} \\
 Player must fix a broken solution that is given when the puzzle level starts.
-Can be used in conjunction with tutorials to teach new concepts. Enforces the fuctionality
-of certain data structures by having the palyer interact with a broken data structure being
+Can be used in conjunction with tutorials to teach new concepts. This enforces the fuctionality
+of certain data structures by having the player interact with a broken data structure being
 introduced to them.\\
+
+If a player has messed with and fixed a broken data structure prior to using it in one of
+their futre solutions, our hope is that their ability to use this data structure and think in
+terms of this data structure when building a solution will be increased.\\
 
 \subsubsection{Nicolas LaCognata}\mbox{} \\
 My biggest inspiration for this project was \textit{Human Resource Machine} by the Tomorrow Corporation.
