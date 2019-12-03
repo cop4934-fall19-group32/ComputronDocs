@@ -1,17 +1,16 @@
-\subsubsection{Ideas}
 The beginning of our project was characterized by a great deal of brainstorming. We took great strides
 to avoid a herd mentality when discussing possible game mechanics, themes, and designs. We frequently
 separated to come up with ideas as individuals before returning to blend those ideas together into a more
 cohesive whole.
 
-\paragraph{Brandy King}\mbox{} \\
+\subsubsection{Brandy King}\mbox{} \\
 Many of my ideas for Computron came from observing players struggle with games like \textit{Human
 Resource Machine}. I focused a lot on the shortcomings of those games; more specifically, I aimed to fill in
 what they were lacking in terms of the accessibility that they provide to inexperienced programmers.
 Additionally, I wanted the game to feel engaging and rewarding for players, something that is often
 overlooked in the development of educationally focused video games. \\
 
-\subparagraph{Declaring Variables and Data Structures:}\mbox{} \\
+\paragraph{Declaring Variables and Data Structures:}\mbox{} \\
 When we were discussing the scope of the instruction set we wanted for our game, I put forward the idea
 of including a ``declare" instruction that players would use to initialize a variable or data structure for use
 in their solution. This would be tied dynamically to the instructions they are able to use, as some instructions
@@ -27,7 +26,7 @@ as a command would be very difficult to do dynamically, so it was adapted to be 
 the solution that the player builds. This way, the variables and data structures could still be handled dynamically,
 both in their declaration and in their attachment to instructions in the solution.\\
 
-\subparagraph{Tutorial Levels:}\mbox{} \\
+\paragraph{Tutorial Levels:}\mbox{} \\
 It became clear very early on that many of the current game offerings in this arena did a lackluster job of
 providing a solid introduction to their game. Many of the games escalated in difficulty far too quickly for
 players new to programming to follow along with. They could complete the first few introductory puzzles,
@@ -52,7 +51,7 @@ As each item on the to-do list is completed, it will be checked off automaticall
 completed, they can elect to exit the tutorial whenever they are ready and move forward to the next
 puzzle, which will necessarily utilize the new element in its solution. \\
 
-\subparagraph{Limiting Certain Commands:}\mbox{} \\
+\paragraph{Limiting Certain Commands:}\mbox{} \\
 By limiting the capabilities of certain commands, we can better communicate to players the functions of certain
 elements in the game. As previously stated, the Move and Copy commands are only useful in conjunction with a
 variable or data structure. These commands could be in the list of available instructions for a level, but they would be
@@ -65,7 +64,7 @@ manipulate the data, and then put the modified data into the structure. This rei
 these structures are used for storage, and will also encourage players to select the right type of structure depending
 on how they may need to manipulate the data in that level.\\
 
-\subparagraph{Instruction ``Jumbotron":}\mbox{} \\
+\paragraph{Instruction ``Jumbotron":}\mbox{} \\
 In \textit{Human Resource Machine}, as the character is acting out the instructions for the player, there is an indicator
 in the panel containing the player's solution that points to which command is being executed at that time. While this
 is very useful when trying to trace through a solution or debug a problem in the code, it is also a bit too subtle
@@ -79,7 +78,7 @@ directly emphasize what action was caused by each instruction. This would, in tu
 the commands and the way they effect the flow of the puzzle, which was something that seemed to be lost to new users
 who were inexperienced at programming.\\
 
-\subparagraph{Indentation Within Conditional Blocks:}\mbox{} \\
+\paragraph{Indentation Within Conditional Blocks:}\mbox{} \\
 When conditional statements are presented in the games we playtested, there was no indication of which code
 belonged inside of the conditional block or where that block ended. This is because the conditions had to be
 controlled with jump statements. However, for users who are not accustomed to scoping and how code blocks
@@ -92,7 +91,7 @@ syntax, where indentation and spacing are paramount to the readability of code. 
 in our pseudo-language, we can not only set up players for the way real programming languages are laid out, but
 also communicate to them more clearly the flow of their solution.\\
 
-\subparagraph{Points-Based Scoring of Solutions:}\mbox{} \\
+\paragraph{Points-Based Scoring of Solutions:}\mbox{} \\
 Making an educational game that people enjoy playing is extremely challenging. It is very important that, in addition
 to being instructive, our game should also be enjoyable. We can foster an early love for Computer Science by
 creating a game that players want to return to. This can be achieved by implementing game mechanics that the
@@ -105,7 +104,7 @@ and try a different approach in an attempt to get a better score. Encouraging th
 stimulate the idea of reevaluating old code and making an effort to improve upon it, especially once new concepts
 have been learned.\\
 
-\subparagraph{Individual Puzzle Solutions Connecting to Solve Larger Puzzles:}\mbox{} \\
+\paragraph{Individual Puzzle Solutions Connecting to Solve Larger Puzzles:}\mbox{} \\
 This idea is borrowed from the game \textit{SpaceChem}, which is a game that implements computational thinking
 to solve puzzles. It falls more on the abstract side of the spectrum, but it has a game mechanic where the solution to
 several puzzles is combined together as the input for another puzzle down the line.\\
@@ -117,68 +116,68 @@ an overall game theme where each puzzle makes sense to be one component of a lar
 reliance will reinforce motivating players to revist puzzles that they have already solved to find more efficient solutions,
 which can in turn lead to a better solution overall.\\
 
-\paragraph{John Billingham:}\mbox{} \\
-\subparagraph{Abstracting conditional jumps with more conventional IF/ELSE statements:}\mbox{} \\
+\subsubsection{John Billingham}\mbox{} \\
+\paragraph{Abstracting conditional jumps with more conventional IF/ELSE statements:}\mbox{} \\
 Instructions can be nested under condional statements. This is meant to
 cause less confusion and more visual aid to a player who may not be familiar
 with the idea of jumping to another place in the instructions. We must be careful
 and not allow the player to create complex nested logic by limiting the number
 of conditional instructions they can use.\\
 
-\subparagraph{Counter that shows how many jumps have been used:}\mbox{} \\
+\paragraph{Counter that shows how many jumps have been used:}\mbox{} \\
 This could enforce the idea of runtime complexity. More jumps means more
 looping which could slow down a player's solution. A reward system could also
 be introduced that awards points based on how fast the solution was. Jump
 instructions could be given as a finite resource to also enforce and teach the
 idea of runtime efficiency.\\
 
-\subparagraph{Data Structures as Input/Output:}\mbox{} \\
+\paragraph{Data Structures as Input/Output:}\mbox{} \\
 Arrays, Stack, Heaps, Queues etc.Different data structures are unlocked as the puzzle complexity increases.
 A differnt instruction set is associated with each data structure, abstracting
 some of the earlier instructions as the puzzle's progress.\\
 
-\subparagraph{Atomic move instructions:}\mbox{} \\
+\paragraph{Atomic move instructions:}\mbox{} \\
 Replacing need for an actor to pick up and place down data  in different places by combing those into
 one atomic "Move" instruction. This is meant to simplify things for the player by keeping
 the previous functionality but removing an unneeded intermediate step of work. Data would have
 a source and a destination when using this instruction, without needing to go through
 the original actor mechanism.\\
 
-\subparagraph{Add/Subtract specificities:}\mbox{} \\
+\paragraph{Add/Subtract specificities:}\mbox{} \\
 Drop-down menus that allow you to choose two source locations to sum, and
 a destination. This is also meant to simplify the instructions for the player.\\
 
-\subparagraph{Color-based indexing system}\mbox{} \\
+\paragraph{Color-based indexing system}\mbox{} \\
 The player accesses instructions through a color-based indexing system.
 Colors represent specific data structures on the game board, while indices represent
 specific locations within a colored data structure. "Green sub 3" would indicate the
 3rd index within the green data structure.\\
 
-\subparagraph{Return instruction}\mbox{} \\
+\paragraph{Return instruction}\mbox{} \\
 Allow the user to choose a data structure to return as their output. The
 contents of the data structure are checked agaisnt the expected output for the
 puzzle level. The player chooses the data structure they wish to return by choosing
 that data structure's color in the output game object.\\
 
-\subparagraph{Debugging levels}\mbox{} \\
+\paragraph{Debugging levels}\mbox{} \\
 The player can step back and forth through their solution, one instruction at a time,
 and the actor should support these operations to show a visual debugging process. This
 visual control can help players find problems within their solution, allowing them to
 progressively reach the end of puzzle level.\\
 
-\subparagraph{Broken solution given initially}\mbox{} \\
+\paragraph{Broken solution given initially}\mbox{} \\
 Player must fix a broken solution that is given when the puzzle level starts.
 Can be used in conjunction with tutorials to teach new concepts. Enforces the fuctionality
 of certain data structures by having the palyer interact with a broken data structure being
 introduced to them.\\
 
-\paragraph{Nicolas LaCognata:}\mbox{} \\
+\subsubsection{Nicolas LaCognata}\mbox{} \\
 My biggest inspiration for this project was \textit{Human Resource Machine} by the Tomorrow Corporation.
 \textit{Human Resource Machine} is a charming little puzzle game that tackles the problem we settled on solving,
 the gamification of computational thinking. I love the game, and find it highly engaging. However, playtests
 with non-programmers clearly demonstrated the games shortcomings when dealing with its target audience.
 
-\subparagraph{Basic Mechanics:}\mbox{} \\
+\paragraph{Basic Mechanics:}\mbox{} \\
 When brainstorming the basic mechanics of our game, my mind continually strayed towards \textit{Human Resource Machine}.
 Through playing the game, and watching others play it, it became clear that Tomorrow Corporation's decision to stick with
 an assembly-like instruction set was an extremely effective mechanic.\\
@@ -187,12 +186,12 @@ The assembly like instructions were simple enough for non-programmers to underst
 advanced puzzles and solutions. Even at the risk of having our game appear as a rip-off, I thought it would be wise to adapt
 these mechanics.
 
-\subparagraph{Data Structures:}\mbox{} \\
+\paragraph{Data Structures:}\mbox{} \\
 After surveying many games in the problem space, we failed to find an example of a game that tackles computational thinking
 with the aid of Data Structures. Data Structures are such a fundamental part of being a programmer, that their omission in these
 games seemed incorrect.
 
-\subparagraph{Card Game Mechanics:}\mbox{} \\
+\paragraph{Card Game Mechanics:}\mbox{} \\
 During our prototyping sessions, I came up with the idea of “Memory Cards”.
 These memory cards would allow the player to declare register locations and data
 structures before their program starts running. Making the mechanics of placing these
@@ -210,7 +209,7 @@ silently drop new instructions on the player as they progress. By making the new
 appear as a reward, we can ensure that the new mechanic being introduced gets the appropriate
 attention from the player.
 
-\paragraph{Sean Simonian}
+\subsubsection{Sean Simonian}
 \begin{itemize}
   \item Static commands and restricted dynamic commands
   \begin{itemize}
