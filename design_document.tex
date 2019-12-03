@@ -8,11 +8,14 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{longtable}
+\usepackage{enumitem}
 
 % document settings
 \usepackage[margin=1in,left=1.5in]{geometry}
 \linespread{1.2}
 \setlength{\parskip}{1em}
+\setlist[itemize]{parsep=0pt}
+\setlist[enumerate]{parsep=0pt}
 \renewcommand*\contentsname{Table of Contents}
 
 % \usepackage{fancyhdr}
@@ -55,8 +58,13 @@
 \maketitle
 \newpage
 
+{
+\setlength{\parskip}{0em}
 \tableofcontents
+}
+
 \newpage
+
 
 \mainmatter
 
