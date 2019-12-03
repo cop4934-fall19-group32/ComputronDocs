@@ -1,0 +1,16 @@
+Choosing Unity as our game's engine made choosing the right version control system for \textit{Computron} an extremely difficult process. The Unity Editor's heavy use of binary files, and its tendency to generate lots of temporary files between program runs made integrating traditional version control systems like Git and Subversion difficult. Unity's solution to it's difficult relationship with version control systems is Unity Collaborate, however a quick evaluation of its features proved it to be an insufficient solution to the teams requirements. Unity Collaborate lacks many basic features of any modern version control system, including: 
+
+\begin{enumerate}
+    \item Branching and Merging.
+    \item Any out of Editor interface to the repository.
+    \item Single file reverts/restores.
+    \item Support for more than 3 team members without paying money.
+    \item Access to more than 1GB of server space without playing money.
+    \item Ability to host a dedicated server.
+\end{enumerate}
+
+Despite the troubles presented, we still decided  to use Git. Using Git for version control worked extremely well during the first sprint, up until our first major integration, it then became clear that Git support was worse than expected. Even after configuring the editor to use plain-text meta files and assets, Git was entirely unable to merge non-conflicting changes in a single Unity scene. Workarounds existed to make Git compatible with these scene merge conflicts, but the process did not work consistently on both Mac and Windows dev machines.
+
+In place of hacking together a a git integration, the team decided to migrate to Perforce. Unity has minor built in support for Perforce, and recently released that support for the free tier of the editor. Perforce is the dominant version control system in the games industry, and is free for small student teams. Unlike Git, perforce does not have a standard (and free) cloud platform for hosting repositories. Perforce administrators are expected to find their own server space. \textit{Computron's} perforce repository is hosted on a free Amazon Web Service EC2 Linux server. The AWS server has proved highly accessible, configurable, and performant. 
+
+Our Perforce configuration has proven stable on both Windows and Mac development machines, and has allowed us to collaborate without any major incidents. Perforce has an extensive feature set for working with the binary files often found in game repositories, and allows users to lock files and force sequential edits when making breaking changes.
