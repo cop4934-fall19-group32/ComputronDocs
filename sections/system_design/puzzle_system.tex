@@ -21,7 +21,7 @@ The responsibilities of the puzzle system are as follows:
 	\item Determine the expected output the player is responsible for generating
 		% what does the following line mean?
 	\item Decide the question we can ask the player
-	\item Offer allowed operations the player can perfrom to solve the puzzle
+	\item Offer allowed operations the player can perform to solve the puzzle
 	\item Load an initial puzzle scene specific to each puzzle level
 	\item Save a puzzle scene state for a specific level when the player leaves
 	\item Load saved puzzle scene states for each level a player has previously attempted
@@ -114,7 +114,7 @@ the player opens a new level, as expected.\\
 
 \subsubsection{Level Saving}
 When the player decides to leave a puzzle level (via exiting the game, returning to the
-level menu, etc), the puzzle system saves the state of the current level by writing
+level menu, etc.), the puzzle system saves the state of the current level by writing
 to the JSON file associated to it. Figure \ref{fig:level_saving_diagram} shows this process.
 
 \begin{figure}[!hb]
@@ -231,7 +231,7 @@ In regards to output, the Puzzle System handles the interaction points between:
   \item The Actor
   \item The output validator
 \end{itemize}
-The Actor, after recieving an output instruction from the Interpreter, places the
+The Actor, after receiving an output instruction from the Interpreter, places the
 data item from its hands to the output box. After all of the instructions are run, the
 entire contents of the output box are submitted for validation, as shown in Figure
 \ref{fig:Puzzle_System_Output_Interaction}.\\
@@ -273,7 +273,7 @@ The card hand is filled during initialization. The JSON file will contain the fo
    \item Number of heap cards
 \end{itemize}
 
-The intitial content of the card hand is based on this data, although the locations
+The initial content of the card hand is based on this data, although the locations
 of these cards may be changed later on.\\
 
 Any update to a card's position will be reflected when returning to that level.
@@ -283,7 +283,7 @@ objects will be instantiated based on their locations, rather than the number of
 each card like above.\\
 
 \begin{figure}[!hb]
-  \caption{Game Card Position Loading/Intializing}
+  \caption{Game Card Position Loading/Initializing}
   \label{fig:Puzzle_System_Cards}
   \centering
   \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Cards.png}
@@ -317,7 +317,7 @@ as shown in Figure \ref{fig:Instruction_Flow}.
 \end{figure}
 
 The JSON file associated to the puzzle level also tells the user interface which
-instructions were left in the editor (Figure \ref{fig:Instruction_Flow2}). The intial state of the puzzle level leaves the
+instructions were left in the editor (Figure \ref{fig:Instruction_Flow2}). The initial state of the puzzle level leaves the
 editor empty. Otherwise, the editor is populated with the same instructions that were
 left during a previous attempt. This also includes final solutions that actually solved the
 puzzle level.
