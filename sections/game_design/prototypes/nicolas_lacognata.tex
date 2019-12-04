@@ -1,34 +1,34 @@
 For my prototype, I spent a lot of time focusing on how we should integrate data structures into our assembly-based
-puzzle structure. The approach I took saw players attaching data structures to registers to 'augment" them and
+puzzle structure. The approach I took saw players attaching data structures to registers to ``augment" them and
 change how the register stores and processes information. I also took a stab at defining a theme for our game.\\
 
 \textbf{Setting}\\
-In Automata, you play an Automaton stuck in a laboratory who is tasked with reprogramming itself to solve problems.
+In \textit{Automata}, you play an Automaton stuck in a laboratory who is tasked with reprogramming itself to solve problems.
 When solving the puzzle, they player may be addressed by a narrator when they make a mistake. The game was to have 
-a "Mad Science" feel to it, much like \textit{Portal}.\\
+a ``Mad Science" feel to it, much like \textit{Portal}.\\
 
 \textbf{Rules}\\
 For each puzzle the player is presented with a problem, and they must use the provided instructions to solve it. 
 Every puzzle will contain the following elements:
-
 \begin{itemize}
-    \item An Input track
-    \item An Output track
-    \item A set of static registers built into the test chamber
-    \begin{itemize}
-        \item These resisters all the player to store manage multiple data cubes
-    \end{itemize}
-    \item A set of register augmenters
-    \begin{itemize}
-        \item These augmenters turn the registers into special data structures that can make the puzzles easier/possible.
-    \end{itemize}
-    \item An instruction set
-    \begin{itemize}
-        \item These are the instructions the automata can execute to solve the puzzle. When placed in the solution window,
-        they will be executed in the order they appear
-    \end{itemize}
-    \item Some operations are invalid for certain states of the puzzle. For your safety, please avoid executing invalid operations.
+	\item An Input track
+	\item An Output track
+	\item A set of static registers built into the test chamber
+	\begin{itemize}
+		\item These registers allow the player to store and manage multiple data cubes
+	\end{itemize}
+	\item A set of register augmenters
+	\begin{itemize}
+		\item These augmenters turn the registers into special data structures that can make the puzzles easier/possible
+	\end{itemize}
+	\item An instruction set
+	\begin{itemize}
+		\item These are the instructions the Automaton can execute to solve the puzzle; when placed in the solution window,
+		they will be executed in the order they appear
+		\item Some operations are invalid for certain states of the puzzle. For your safety, please avoid executing invalid operations.
+	\end{itemize}
 \end{itemize}
+\newpage
 
 \textbf{Instruction Set}
 \begin{center}
@@ -76,7 +76,7 @@ Every puzzle will contain the following elements:
                 \textbf{JUMP} 
             \end{center}& 
             \textbf{Summary:} 
-            \newline This type of jump is unconditional. When your automata read this instruction, it will move its instruction 
+            \newline This type of jump is unconditional. When your automata reads this instruction, it will move its instruction 
             counter to the corresponding anchor, effectively skipping forward or backward in your program.
 
             \textbf{Notes:} 
@@ -94,8 +94,8 @@ Every puzzle will contain the following elements:
                 \textbf{JUMP IF NULL} 
             \end{center}& 
             \textbf{Summary:} 
-            \newline This type of jump is conditional. When your automata read this instruction, it will move its instruction counter 
-            to the corresponding anchor, if (and only if) its hands are empty.
+            \newline This type of jump is conditional. When your automata reads this instruction, it will move its instruction counter 
+            to the corresponding anchor, if and only if its hands are empty.
 
             \textbf{Notes:} 
             \newline This instruction can be used to exit loops when there is no more input.
@@ -107,8 +107,8 @@ Every puzzle will contain the following elements:
                 \textbf{JUMP IF LESS X} 
             \end{center}& 
             \textbf{Summary:} 
-            \newline This type of jump is conditional. When your automata read this instruction, it will move its 
-            instruction counter to the corresponding anchor, if (and only if) the data in its hand is less than the data in register X.
+            \newline This type of jump is conditional. When your automata reads this instruction, it will move its 
+            instruction counter to the corresponding anchor, if and only if the data in its hand is less than the data in register X.
 
             \textbf{Notes:} 
             \newline This instruction can be used to exit loops or select branches of logic.
@@ -121,8 +121,8 @@ Every puzzle will contain the following elements:
                 \textbf{JUMP IF GREATER X} 
             \end{center}& 
             \textbf{Summary:} 
-            \newline This type of jump is conditional. When your automata read this instruction, it will move its instruction counter 
-            to the corresponding anchor, if (and only if) the data in its hand is less than the data in register X.
+            \newline This type of jump is conditional. When your automata reads this instruction, it will move its instruction counter 
+            to the corresponding anchor, if and only if the data in its hand is less than the data in register X.
 
             \textbf{Notes:} 
             \newline This instruction can be used to exit loops or select branches of logic.
@@ -139,7 +139,7 @@ Every puzzle will contain the following elements:
                 \textbf{MOVETO X} 
             \end{center}& 
             \textbf{Summary:} 
-            \newline This instruction allows your automata to place the items in its hand into a register on the board, specified by the argument X.
+            \newline This instruction allows your automata to place the item in its hand into a register on the board, specified by the argument X.
 
     
             \textbf{Notes:} 
@@ -152,10 +152,10 @@ Every puzzle will contain the following elements:
                 \textbf{COPYTO X} 
             \end{center}& 
             \textbf{Summary:} 
-            \newline This instruction allows your automata to copy the items in its hand into a register on the board, specified by the argument X.
+            \newline This instruction allows your automata to copy the item in its hand into a register on the board, specified by the argument X.
     
             \textbf{Notes:} 
-            \newline This instruction overwrites any data in the target register, your automata retains a copy of the data.
+            \newline This instruction overwrites any data in the target register, but your automata retains a copy of the data.
     
             \textbf{Faults:}
             \newline Hand Empty Error\\
@@ -180,7 +180,7 @@ Every puzzle will contain the following elements:
             \newline This instruction allows your automata to copy an item from a register and keep it in its hand.
     
             \textbf{Notes:} 
-            \newline This instruction overwrites any data the automata is holding, the data also remains in the target register.
+            \newline This instruction overwrites any data the automata is holding, but the data also remains in the target register.
     
             \textbf{Faults:}
             \newline None\\
