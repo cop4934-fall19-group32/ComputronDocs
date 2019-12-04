@@ -1,8 +1,7 @@
 \subsubsection{Overview}
-The Actor will be responsible for simulating the execution of the solution constructed
-by the player through movement and animations. It is an animated character in the game that will move around the Puzzle Scene and manipulate the data elements of the current puzzle based on the sequence of commands that the player constructs in the Solution Pane of the User Interface. \\
+The Actor will be responsible for simulating the player's solutions to the game's puzzles. The Actor will be the game's primary source of non-verbal information, communicating to the player through movement and animations. The Actor's name is Computron (for whom the game is named), and it will be seen moving around the Puzzle Scene. Computron will be tasked with manipulating the data elements of the current puzzle based on the sequence of commands that the player constructs in the Solution Pane of the User Interface. \\
 
-Figure \ref{fig:actor_diagram} provides a high-level outline of the Actor component, all of its internal processes, and how it interacts with the other core aspects of the game.\\
+Figure \ref{fig:actor_diagram} provides a high-level outline of the Actor System, all of its internal processes, and how it interacts with the other core systems of the game.\\
 
 \begin{figure}[!htb]
   \caption{Actor Component Overview}
@@ -14,8 +13,8 @@ Figure \ref{fig:actor_diagram} provides a high-level outline of the Actor compon
 The responsibilities of the Actor are as follows:
 
 \begin{itemize}
-	\item Retrieve commands from the Interpreter component
-	\item Alert the Interpreter component to halt execution when an invalid command is attempted
+	\item Retrieve commands from the Interpreter System
+	\item Alert the Interpreter to halt execution when an invalid command is attempted
 	\item Move to the correct waypoints based on the command received
 	\item Properly handle data manipulation in the puzzle scene (move and update data elements
 			as specified by the current command)
@@ -28,7 +27,7 @@ The responsibilities of the Actor are as follows:
 Effective integration with the Interpreter is a key component of the functionality of the Actor. The Actor relies completely on the command sequence from the Interpreter in order to illustrate the execution of the solution. The Actor will continue to retrieve the next command in sequence from the Interpreter until the sequence terminates or an invalid command is attempted. If the command can be executed, the Actor will carry out the instruction visually so that the player can understand the flow of execution and the logic behind their solution. If the command causes an error in execution, the Actor will alert the Interpreter to halt execution. The flow of this process between the Actor and Interpreter can be seen in Figure \ref{fig:interpreter_interactions}.\\
 
 \begin{figure}[!htb]
-  \caption{Interactions between the Interpreter and Actor components}
+  \caption{Interactions between the Interpreter and Actor}
   \label{fig:interpreter_interactions}
   \centering
   \includegraphics[scale=0.8]{Diagrams/interpreter_interactions.png}
@@ -37,7 +36,7 @@ Effective integration with the Interpreter is a key component of the functionali
 As mentioned in Section 6.5.4, there is a three step handshake between the Actor and the Interpreter when processing instructions. To summarize, the Actor requests the next command, the Interpreter responds with a data structure of that command, and the Actor then reports the results of the execution of that command to the Interpreter. Again, this communication flow can be seen in Figure \ref{fig:interpreter_Actor_interface}. 
 
 \subsubsection{Processing Commands}
-The processing of commands is the core function of the Actor. Interfacing with the Interpreter component is only the first part of command processing; the majority of that processing occurs independently within the Actor component once a command has been retrieved. Figure \ref{fig:processing_commands} shows in detail how the Actor internally processes commands.\\
+The processing of commands is the core function of the Actor. Interfacing with the Interpreter is only the first part of command processing; the majority of that processing occurs independently within the Actor once a command has been retrieved. Figure \ref{fig:processing_commands} shows in detail how the Actor internally processes commands.\\
 
 \begin{figure}[!htb]
   \caption{The state diagram followed by the actor when processing commands}
@@ -66,7 +65,7 @@ The associated opcode for the command is a an integer value unique to that comma
 \end{figure}
 
 \subsubsection{Player Messaging}
-The Actor is also a key component of communication with the player. Through the visual execution of the instructions that the player has selected, the Actor conveys how the solution the player built functions. This includes not just moving around the board and manipulating the data elements, but also providing visual cues to the user via detailed animations. For example, the data elements will be visibly picked up and held by the Actor. If that data is copied to another location, the Actor will be seen producing a copy of that data and placing it at the location specified. Data that is incremented or decremented via commands will be changed according to those commands so that the player sees and understands how the data elements are being manipulated. Additionally, providing expressive and emotive animations enhances the clarity of communication without bogging down the player with too much text. If the current command is to select the next element from Input but the Input box is empty, the Actor would attempt to pick up the item, find that nothing is there, and then emphasize that their hands are empty.\\
+The Actor is also a key component of communication with the player. Through the visual execution of the instructions that the player has selected, the Actor conveys how the player's solution to the puzzle functions. This includes not just moving around the board and manipulating the data elements, but also providing visual cues to the user via detailed animations. For example, the data elements will be visibly picked up and held by the Actor. If that data is copied to another location, the Actor will be seen producing a copy of that data and placing it at the location specified. Data that is incremented or decremented via commands will be changed according to those commands so that the player sees and understands how the data elements are being manipulated. Additionally, providing expressive and emotive animations enhances the clarity of communication without bogging down the player with too much text. If the current command is to select the next element from Input but the Input box is empty, the Actor would attempt to pick up the item, find that nothing is there, and then emphasize that their hands are empty.\\
 
 Aside from effective visual communication, the Actor will also provide information to the player via text when applicable. For the most part, this will be explicitly in response to runtime errors that are encountered during execution. Because a certain runtime error is always the same no matter what instance of the attempted puzzle solution causes it to occur, the Actor can provide messaging prompts to the player about these errors independently of the puzzle itself. As previously seen in Figure \ref{fig:processing_commands}, the Actor processes the success of commands completely independently and reports those errors back to the Interpreter so that the Interpreter can halt execution. It is because of this independent evaluation that the Actor does not need to rely on input from any other systems in order to provide successful messaging on these errors.\\
 
