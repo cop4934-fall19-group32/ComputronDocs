@@ -1,18 +1,43 @@
-Choosing Unity as our game's engine made choosing the right version control system for \textit{Computron} an extremely difficult process. The Unity Editor's heavy use of binary files, and its tendency to generate lots of temporary files between program runs made integrating traditional version control systems like Git or Subversion difficult. We considered many solutions to this problem.
+Choosing Unity as our game's engine made choosing the right version control system 
+for \textit{Computron} an extremely difficult process. The Unity Editor's heavy use of 
+binary files, and its tendency to generate lots of temporary files between program runs 
+made integrating traditional version control systems like Git or Subversion difficult. We 
+considered many solutions to this problem.\\
 
-Our first consideration was Unity's own solution to it's difficult relationship with version control systems, Unity Collaborate. Unfortunately, even a cursory glance over its features proved it to be an insufficient solution to the teams requirements. Unity Collaborate lacks many basic features of any modern version control system, including: 
-
+Our first consideration was Unity's own solution to it's difficult relationship with version 
+control systems, Unity Collaborate. Unfortunately, even a cursory glance over its 
+features proved it to be an insufficient solution to the teams requirements. Unity Collaborate 
+lacks many basic features of any modern version control system, including: 
 \begin{enumerate}
-    \item Branching and Merging.
-    \item Any out of Editor interface to the repository.
-    \item Single file reverts/restores.
-    \item Support for more than 3 team members without paying money.
-    \item Access to more than 1GB of server space without playing money.
-    \item Ability to host a dedicated server.
+	\item Branching and Merging.
+	\item Any out of Editor interface to the repository.
+	\item Single file reverts/restores.
+	\item Support for more than 3 team members without paying money.
+	\item Access to more than 1GB of server space without paying money.
+	\item Ability to host a dedicated server.
 \end{enumerate}
 
-Instead of surveying further, the team decided to move forward with Git as our version control system. Using Git worked extremely well during the first sprint, up until our first major integration. It then became abundantly clear that Git support was worse than we evaluated it to be. Even after configuring the editor to use plain-text meta files and assets, Git was entirely unable to merge non-conflicting changes in a single Unity scene. Workarounds existed to make Git compatible with these scene merge conflicts, but the process did not work consistently on both Mac and Windows dev machines.
 
-In place of hacking together a Git integration, the team decided to migrate to Perforce. Perforce is a centralized version control system that is currently the the dominant version control system in the games industry. Perforce free for small student teams, and Unity has minor built in support. Up until recently, Unity's Perforce integration was a premium only feature, but it has now been quietly released for the free tier of the editor. Unlike Git, perforce does not have a standard (and free) cloud platform for hosting repositories. Perforce administrators are expected to find their own server space. \textit{Computron's} perforce repository is hosted on a free Amazon Web Service EC2 Linux server. The AWS server has proved highly accessible, configurable, and performant. 
+Instead of surveying further, the team decided to move forward with Git as our version 
+control system. Using Git worked extremely well during the first sprint, up until our first 
+major integration. It then became abundantly clear that Git support was much worse than 
+we had originally evaluated it to be. Even after configuring the editor to use plain-text meta 
+files and assets, Git was entirely unable to merge non-conflicting changes in a single Unity 
+scene. Workarounds existed to make Git compatible with these scene merge conflicts, but 
+the process did not work consistently on both Mac and Windows development machines, 
+of which our team is equally using both.\\
 
-Our Perforce configuration has proven stable on both Windows and Mac development machines, and has allowed us to collaborate without any major incidents. Perforce has an extensive feature set for working with the binary files often found in game repositories, and allows users to lock files and force sequential edits when making breaking changes.
+In place of hacking together a Git integration, the team decided to migrate to Perforce. 
+Perforce is a centralized version control system that is currently the dominant version control 
+system in the games industry. Perforce is free for small student teams, and Unity has minor 
+built in support. Up until recently, Unity's Perforce integration was a premium only feature, 
+but it has now been quietly released for the free tier of the editor. Unlike Git, Perforce does 
+not have a standard (and free) cloud platform for hosting repositories. Perforce administrators 
+are expected to find their own server space. \textit{Computron's} perforce repository is hosted 
+on a free Amazon Web Service EC2 Linux server. The AWS server has proved highly accessible, 
+configurable, and performant. \\
+
+Our Perforce configuration has proven stable on both Windows and Mac development machines, 
+and has allowed us to collaborate without any major incidents. Perforce has an extensive feature 
+set for working with the binary files often found in game repositories, and allows users to lock files 
+and force sequential edits when making breaking changes.\\

@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 
+% packages used
 \usepackage{xcolor}
 \usepackage{array}
 \usepackage{makecell}
@@ -9,9 +10,8 @@
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{enumitem}
-
-% hyperref package makes the table of contents clickable to jump to a section
 \usepackage{hyperref}
+\usepackage{fancyhdr}
 
 % document settings
 \usepackage[margin=1in,left=1.5in]{geometry}
@@ -20,63 +20,54 @@
 \setlist[itemize]{parsep=0pt}
 \setlist[enumerate]{parsep=0pt}
 \renewcommand*\contentsname{Table of Contents}
+\setlength\parindent{0pt}
 
-\usepackage{fancyhdr}
-
-
-\newcommand\todo[1]{\textcolor{red}{TODO: #1}}
-
-\def\frontmatter{%
+% settings for title and table of contents
+\def\frontmatter{
     \pagenumbering{roman}
     \setcounter{page}{1}
     \renewcommand{\thesection}{\Roman{section}}
-}%
+}
 
-\def\mainmatter{%
+%settings for remainder of the document
+\def\mainmatter{
     \pagenumbering{arabic}
     \setcounter{page}{1}
     \setcounter{section}{0}
     \renewcommand{\thesection}{\arabic{section}}
-
     \pagestyle{fancy}
-}%
+}
 
-\setlength\parindent{0pt}
-
+\title{Computron\\
+  {\small Group 32}
+}
 \author{
   John Billingham\\
   Brandy King\\
   Nicolas LaCognata\\
-  Sean Simonian\\\\
+  Sean Simonian\\
   {\small Advisor: Tom Carbone}
 }
 
-\title{Computron}
 
 \begin{document}
 
+\maketitle
+\thispagestyle{empty}
+\clearpage
+
 \frontmatter
 
-% Cover page with title, group number, team members, date, and any other relevant information, such as participating organizations and sponsors.
-\maketitle
-
-\begin{center}
-  Group 32
-\end{center}
-
-\newpage
-
+% spacing settings for ToC
 {
 \setlength{\parskip}{0em}
 \tableofcontents
 }
-
 \newpage
 
 
 \mainmatter
 
-% Executive summary: An administrative and technical abstract, which includes a brief description of the project, the project objectives, and the technical approach. This is page number 1.
 \section{Executive Summary}
   \input{sections/executive_summary.tex}
 \newpage
