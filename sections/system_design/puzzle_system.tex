@@ -58,8 +58,8 @@ will be mentioned here. Refer to the User Interface System for a more detailed
 look at these game components.
 
 \subsubsection{Puzzle Level Generation}
-When a level is chosen to be played by the player, the puzzle system controls
-which game objects get loaded on to the puzzle Scene. This process is handled
+When the player chooses a level, the puzzle system controls
+which game objects get loaded in to the puzzle Scene. This process is handled
 by a puzzle generation script that reads JSON data associated to the specific
 level that was chosen.
 
@@ -83,7 +83,7 @@ the entire scheme. The only difference between the two is the possible need to
 initially create a level's JSON file, but that created file, or the one that already
 existed under the same name, is always loaded by the generator.\\
 
-When a game is ran for the first time, there will be no JSON files associated to
+When a game is run for the first time, there will be no JSON files associated to
 ANY level. This means that the level initialization script will be invoked each time
 the player opens a new level, as expected.\\
 
