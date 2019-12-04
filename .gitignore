@@ -10,3 +10,5 @@
 *.dvi
 *.synctex*
 .vscode
+*.lof
+*.out
