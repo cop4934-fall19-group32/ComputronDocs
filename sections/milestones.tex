@@ -190,7 +190,7 @@ all aspects of the project including:
 	The milestones will be sets of requirements to ensure the project remains on track.
 \end{enumerate}
 
-\subsection{Open to Interpretation (Wednesday, January 15th)}
+\subsection{Open to Interpretation (Friday, January 10th)}
 
 \subsubsection*{Summary}
 ``Open to Interpretation" will mark the project's first Alpha release. In this state, the game 
@@ -214,14 +214,21 @@ Alpha release are as follows:
 	\begin{enumerate}
 		\item Launch the game from outside the Unity Editor.
 		\item Start the game from the main menu, and enter the puzzle selection scene.
-		\item From the puzzle selection scene, the player should be able to choose from 
-		a limited set of distinct puzzles that represent a vertical slice of our final game's mechanics.
-		\item After selecting a puzzle, the player should be transferred to the puzzle scene.
-		\item In the puzzle scene, the player should be presented with controls relevant to the 
-		puzzle selected.
+		\item Upon first run, only the first level of the game should be unlocked.
+		\item Subsequent levels will only be unlocked after the player completes a puzzle.
+		\begin{itemize}
+			\item Exiting a puzzle without solving it will not unlock new puzzles
+		\end{itemize}
+		\item Puzzle unlocking will have an associated visual when returning to the level select screen.
+		\begin{itemize}
+			\item Player controls will be disabled and player focus should be drawn to the unlocked levels. (e.g. Camera zoom, simple animations, etc.)
+		\end{itemize}
+		\item After selecting a puzzle, the player should be transferred to the puzzle scene. The game should have at least two distinct levels.
+		\item In the puzzle scene, the following mechanics should be operational.
 		\begin{itemize}
 			\item The instruction set pane shows only the subset of instructions chosen 
 			to be available for that puzzle.
+			\item Instructions can be dropped into the solution pane and manipulated in an intuitive way
 			\item If the puzzle includes Memory Cards, the cards are displayed at the 
 			bottom of the screen and are interactable.
 			\item Move and Copy instructions are not usable until at least one 
@@ -231,17 +238,17 @@ Alpha release are as follows:
 			\item A Memory Card cannot be removed if it is referenced by an 
 			instruction in the solution window. Instructions blocking card removal are 
 			highlighted when the player's request fails.
+			\item Computron is capable of interacting with the Inbox, Outbox, and registers.
 		\end{itemize}
 	\end{enumerate}
 	\item Available Puzzles\\
-	Puzzles 1, 2a, 3, and 5 of the tutorial sequence specified in Section~\textbf{\ref{section:tutorial}}.
+	Puzzles 3, 4 of the tutorial sequence specified in Section~\textbf{\ref{section:tutorial}}.
 	\item Available Mechanics
 	\begin{itemize}
 		\item Level Selection\\
 		The level selection scene allows players to chose which puzzle they'd like to attempt. 
 		Choosing a level should transfer the player to the Puzzle Scene with the relevant puzzle 
-		data loaded. The player will not be restricted in which puzzles are available, or which 
-		order they chose to complete them.
+		data loaded. The player will be restricted in which puzzles are available, and have more unlocked as they successfully complete them.
 		\item Basic instruction writing\\
 		Player can click and drag the INPUT, OUTPUT, MOVETO, MOVEFROM, JUMP, and 
 		JUMP IF NULL instructions into the instruction pane. Jump instructions allow player 
@@ -258,6 +265,7 @@ Alpha release are as follows:
 			\item Solution Runtime
 			\item Memory Card cost
 		\end{itemize}
+		After they are done viewing this screen, they will be transferred back to the puzzle selection scene where they will see new levels unlock.
 	\end{itemize}
 \end{itemize}
 
