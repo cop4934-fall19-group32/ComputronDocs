@@ -1,3 +1,4 @@
+\subsection{Overview}
 As the invisible interface between the player's instructions window and the Actor's 
 execution logic, the Interpreter's responsibilities are considerably abstracted from 
 normal gameplay programming. More specifically, the Interpreter is responsible for 
@@ -6,7 +7,8 @@ user interface, and marshaling the release of commands to the actor for executio
 
 \subsubsection{Language}
 In order to keep the game accessible to inexperienced users, we developed a simple
-pseudo-language to manage the manipulation of the puzzles.
+pseudo-language to manage the manipulation of the puzzles. Below are the 13 instructions that 
+make up the CAL.
 
 \begin{itemize}
  	\item INPUT\\
@@ -26,40 +28,43 @@ pseudo-language to manage the manipulation of the puzzles.
 	 is not holding any value. This instruction is often used to break out of loops.
 	\item JUMP IF LESS [X]\\
 	The JUMP IF LESS [X] is a conditional jump instruction, which is only activated if the 
-	value the Actor is holding is less than the value stored in player-specified register X. If 
-	register X is empty, this instruction will be considered invalid and raise a runtime error.
+	value the Actor is holding is less than the value stored in player-specified memory card X. If 
+	memory card X is empty, this instruction will be considered invalid and raise a runtime error.
 	\item JUMP IF GREATER [X]\\
 	The JUMP IF GREATER [X] is a conditional jump instruction, which is only activated if 
-	the value the Actor is holding is greater than the value stored in player-specified register 
-	X. If register X is empty, this instruction will be considered invalid and raise a runtime error.
+	the value the Actor is holding is greater than the value stored in player-specified memory card 
+	X. If memory card X is empty, this instruction will be considered invalid and raise a runtime error.
+	\item JUMP IF EQUAL [X]\\
+	The JUMP IF EQUAL [X] is a conditional jump instruction, which is only activated if 
+	the value the Actor is holding is equal to the value stored in player-specified memory card 
+	X. If memory card X is empty, this instruction will be considered invalid and raise a runtime error.
 	\item MOVETO [X]\\
 	The MOVETO [X] command instructs Computron to move the value currently being 
-	held into the player-specified register X. If Computron's hands are currently empty, this 
+	held into the player-specified memory card X. If Computron's hands are currently empty, this 
 	instruction will be considered invalid and raise a runtime error. If there is a value currently in 
-	the register, it will be overwritten.
+	the memory card, it will be overwritten.
 	\item MOVEFROM [X]\\
 	The MOVEFROM [X] command instructs Computron to remove the value currently being 
-	stored in the player-specified register X. If the register is empty, Computron will retrieve 
+	stored in the player-specified memory card X. If the memory card is empty, Computron will retrieve 
 	and hold a NULL value. If Computron is currently holding a value, it will be overwritten.
 	\item COPYTO [X]\\
 	The COPYTO [X] command instructs Computron to move the value currently being held 
-	into the player-specified register X. Computron will retain a copy of the number. If 
+	into the player-specified memory card X. Computron will retain a copy of the number. If 
 	Computron's hands are currently empty, this instruction will be considered invalid and raise a 
-	runtime error. If there is a value currently in the register, it will be overwritten.
+	runtime error. If there is a value currently in the memory card, it will be overwritten.
 	\item COPYFROM [X]\\
 	The COPYFROM [X] command instructs Computron to retrieve a copy of the value currently 
-	being stored in in the player-specified register X. If the register is empty, Computron will 
+	being stored in in the player-specified memory card X. If the memory card is empty, Computron will 
 	retrieve and hold a NULL value. If Computron is currently holding a value, it will be overwritten.
 	\item ADD [X]\\
 	The ADD [X] command instructs Computron to add the value stored in player-specified 
-	register X to the value currently held. If either Computron's hands or register X are empty, this 
+	memory card X to the value currently held. If either Computron's hands or memory card X are empty, this 
 	instruction will be considered invalid and raise a runtime error. Otherwise, Computron will 
 	perform the addition and overwrite his current value.\\
-\newpage
 	\item SUBTRACT [X]\\
 	The SUBTRACT [X] command instructs Computron to subtract the value stored in 
-	player-specified register X from the value currently held. If either Computron's hands or 
-	register X are empty, this instruction will be considered invalid and raise a runtime error. 
+	player-specified memory card X from the value currently held. If either Computron's hands or 
+	memory card X are empty, this instruction will be considered invalid and raise a runtime error. 
 	Otherwise, Computron will perform the subtraction and overwrite his current value.
 \end{itemize}
 
@@ -68,10 +73,12 @@ To facilitate proper simulation of the player's solution, the interpreter will n
 a program counter that iterates and jumps through the player's code appropriately. To 
 ensure that these updates happen correctly, the Interpreter will need to rely on reports 
 from the Actor that state the validity of instructions and the result of conditional expressions.
+Updates to the program counter are forwarded to the Puzzle's UI system to maintain a 
+visual representation of the program counter while the solution executes.
 
 \subsubsection{UI Interface}
-To fulfill its responsibilities, the Interpreter will need to communicate closely with the User 
-Interface to retrieve player instructions and report the state of the program counter. 
+In addition to updating the program counter, the Interpreter is closely tied to the Puzzle UI's primary
+control panel. The Start, Step, and Halt buttons all tie directly to the Interpreter's control interface.
 Figure \ref{fig:interpreter_UI_interface} illustrates the nature of these interactions.
 
 \begin{figure}[!htb]
@@ -108,3 +115,10 @@ The stages of the handshake are:
 	to report runtime errors to the Interpreter if the instruction is deemed invalid and report 
 	the result of a conditional expression if the instruction included one. 
 \end{enumerate}
+
+\subsubsection{CAL Virtual Machine}
+The Actor's implementation of the CAL is tightly coupled to the physical state of the puzzle. In addition,
+it performs many non-executing tasks to visualize the language. These conditions made the unsuitable for 
+conducting performance and correctness evaluations. To support those functions of solution grading the Interpreter
+manages a Computron Assembly Language Virtual Machine (CALVM) object. The CALVM allows the interpreter to simulate
+player solutions rapidly, and inspect runtime data like error states and cycle count easily. 
