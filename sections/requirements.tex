@@ -1,34 +1,27 @@
 \subsection{Functional Requirements}
 \begin{enumerate}
-	\item Product will help users learn and understand foundational computer science 
+	\item Be a playable video game
+	\item Help users learn and understand foundational computer science 
 		concepts
-	\item Product will be a playable video game
-	\item Game will have an easy to use 2D interface to encourage beginners
+	\item Have an easy to use 2D interface to encourage beginners
 	\item Present the user with various challenges and puzzles to solve
 	\item Provide beginner level explanations to concepts as they’re introduced
-	\item Present visuals to help users understand concepts that are being
-		introduced or applied
+	\item Display visuals to help users understand concepts that are being introduced
 	\item Encourage user to apply concepts to solve subsequent challenges once it has
 		been introduced
-	\item Provide hints to user when requested
+	\item Supply hints to user when requested
 	\item Allow user to see their previous solution attempts for a level
-	\item Help guide users towards an appropriate solution
-	\item Break down complex challenges into smaller parts with guidance/checkpoints 
-		for each main step
 	\item Simulate the execution of player’s solutions with animated visuals
 		corresponding to the steps
-	\item Inform player of the accuracy of their solution
-	\item Inform player of the efficiency of their solution
-	\item Inform player of the (extremely simplified/generalized) space complexity of their solution
-	\item Allow user to speed up the simulations if they are doing well with the
-		current challenges
+	\item Inform player of the accuracy and efficiency of their solution
+	\item Give generalized feedback on the effifciency and space complexity of a solution
+	\item Permit user to speed up the simulations
 	\item Halt solution simulation in the case of:
 		\begin{itemize}
 		\item Incorrect Output
-		\item Invalid Instruction
-		\item Error
+		\item Runtime Error
 		\end{itemize}
-	\item Game will be scalable so additional levels/challenges can be added later on
+	\item Support scalability so additional levels can be added later on
 	\item Interface will be suitable for users with certain common disabilities:
 		\begin{itemize}
 		\item Color blindness
@@ -36,34 +29,27 @@
 		\item Epilepsy
 		\item Auditory stimuli sensitivities
 		\end{itemize}
-	\item No personally identifiable information about users will be intentionally 
-		collected or stored
 \end{enumerate}
 
 \subsection{Non-Functional Requirements}
 \begin{enumerate}
 	\item Demonstrate concepts visually with 2D animations simulating the 
 		execution of a user’s solution to a challenge
-	\item Allow user to select levels/challenges
+	\item Allow user to select levels
 	\item Design a simple pseudo-language with restricted capabilities for the
 		user to solve challenges
 	\item Interpret the set of commands in a user’s solution
 	\item Solutions must follow interpreter requirements in order to be simulated
 		(similar to compile time errors)
-	\item Solution simulation will detect errors and halt immediately if an error
+	\item Simulation will detect errors and halt immediately if an error
 		is encountered (similar to runtime errors)
 	\item Store user’s solution attempts for a level
-	\item Check if current solution attempt matches previous solution attempt
-	\item Analyze patterns to detect infinite loop
-	\item Track the steps taken to execute a solution
 	\item Evaluate the space complexity of a solution by tracking the data
 		structures used
-%to avoid a list being split over two pages
-\newpage
 	\item Interface will accommodate users with certain common disabilities:
 		\begin{itemize}
 		\item Components in which color is significant to gameplay will use 
-			a color-blind friendly palette
+			a colorblind friendly palette
 		\item Components in which sound is significant to gameplay will have
 			corresponding text and/or visual indicators to accommodate deaf users
 		\item Avoid presenting bright flashing colors/lights that may trigger
@@ -71,8 +57,9 @@
 		\item Avoid sudden loud or unpleasant sounds that may disturb users with
 			auditory sensitivities
 		\end{itemize}
-	\item Game will run on Windows and Mac computers
-	\item Game will perform smoothly on standard hardware
-	\item Game will present efficiency metrics to the player after they successfully 
+	\item Run on Windows and Mac computers, as well as Linux subsystems
+	\item Perform smoothly on standard hardware
+	\item Present efficiency metrics to the player after they successfully 
 		solve a puzzle
+	\item Personally identifiable information about users will not be collected or stored
 \end{enumerate}
