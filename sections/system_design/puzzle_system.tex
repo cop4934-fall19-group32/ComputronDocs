@@ -2,7 +2,7 @@
 Our puzzle system will be responsible for formally defining the nature and
 functionality of the puzzles in our game.\\
 
-The following diagram, Figure \ref{fig:puzzle_system_diagram}, gives a general overview 
+The following diagram, Figure \ref{fig:puzzle_system_diagram}, gives a general overview
 of the components of the puzzle system and how they communicate with one another.
 
 \begin{figure}[!hb]
@@ -53,103 +53,75 @@ Interface System, there are certain parts of these components that rely on
 the Puzzle System’s level generation functionalities. Only that relationship
 will be mentioned here. Refer to the User Interface System for a more detailed
 look at these game components.
+\clearpage
 
 \subsubsection{Puzzle Level Generation}
 When the player chooses a level, the puzzle system controls
 which game objects get loaded in to the puzzle Scene. This process is handled
-by a puzzle generation script that reads JSON data associated to the specific
-level that was chosen.
-
-\subsubsection{Level Initialization/Loading}
-The generator will either load or initialize a puzzle level depending on whether
-or not the player has previously attempted to solve the puzzle level. This
-decision process is exemplified in Figure \ref{fig:json_decision_diagram}.\\
-
-If the JSON file does not exist, the player has never attempted the chosen level before. The
-generator will then need to call upon a level initialization script that will
-create a JSON file for the level that represents its initial state. After the file
-is written, its data is loaded by the generator and the puzzle Scene is loaded.
-This sequence is shown in Figure \ref{fig:level_initialization_diagram}.\\
-
-If the JSON file does exist, the generator simply skips the initialize step and
-loads the puzzle Scene state based on the file that was found for the level (as
-shown in Figure \ref{fig:level_loading_diagram}).\\
-
-This flow of control combines initialization and loading processes in order to simplify
-the entire scheme. The only difference between the two is the possible need to
-initially create a level's JSON file, but that created file, or the one that already
-existed under the same name, is always loaded by the generator.\\
-
-When a game is run for the first time, there will be no JSON files associated to
-ANY level. This means that the level initialization script will be invoked each time
-the player opens a new level, as expected.\\
+by a puzzle generation script as seen in Figure \ref{fig:puzzle_level_data_flow}.\\
 
 \begin{figure}[!hb]
-  \caption{Puzzle Level Initialization/Loading Decision}
-  \label{fig:json_decision_diagram}
+  \caption{Puzzle Level Loading/Saving}
+  \label{fig:puzzle_level_data_flow}
   \centering
-  \includegraphics[scale=0.9]{Diagrams/json_decision_diagram.png}
+  \includegraphics[scale=0.6]{Diagrams/PuzzleLevelDataFlow.png}
 \end{figure}
 \vfill
 \clearpage
 
-\begin{figure}[!t]
-  \caption{Puzzle Level Initialization}
-  \label{fig:level_initialization_diagram}
-  \centering
-  \includegraphics[scale=0.9]{Diagrams/level_initialization_diagram.png}
-\end{figure}
+The puzzle generator uses two different kinds of data: initial puzzle data and saved puzzle data.\\
 
-\begin{figure}[!b]
-  \caption{Puzzle Level Loading}
-  \label{fig:level_loading_diagram}
-  \centering
-  \includegraphics[scale=0.9]{Diagrams/level_loading_diagram.png}
-\end{figure}
-\vfill
-\clearpage
-
-\subsubsection{Level Saving}
-When the player decides to leave a puzzle level (via exiting the game, returning to the
-level menu, etc.), the puzzle system saves the state of the current level by writing
-to the JSON file associated to it. Figure \ref{fig:level_saving_diagram} shows this process.
-
-\begin{figure}[!hb]
-  \caption{Puzzle Level Saving}
-  \label{fig:level_saving_diagram}
-  \centering
-  \includegraphics[scale=0.9]{Diagrams/level_saving_diagram.png}
-\end{figure}
-
-\subsubsection{JSON File Format}
-The JSON file is serialized using a PuzzleData object that contains information
-needed to fill the puzzle scene. This data can be separated into two categories:\\
-
-Data Needed for Level State Initialization:
+The initial puzzle data is the information that the scene will always need to load:
 \begin{itemize}
-  \item Initial cards in hand
-  \item Number of register cards available
-  \item Number of stack cards available
-  \item Number of queue cards available
-  \item Number of heap cards available
-  \item Input size
-  \item Instruction set
-  \item Puzzle description
+  \item Input stream
+  \item Expected output
+  \item Level description
+  \item Allowed instructions
+  \item Allowed cards
+  \item Number of each allowed card
+  \item Hints
+  \item Earnable awards
+  \item Award requirements
 \end{itemize}
 
-Data Needed for Loading a Previous Level State:
+This information varies from level to level. It is retrieved from a puzzle data script attached to
+a game object that travels from a selected map node from the level selection scene. This can be
+thought of as a base state of the puzzle level. If the player has never attempted the level, only
+this data will be used when generating it.\\
+
+Saved puzzle data is information that the puzzle generator needs to load from a previous attempt
+at the puzzle level. It includes:
 \begin{itemize}
-  \item Card placement
-  \item Cards in hand
-  \item Instructions in editor
+  \item Instructions left in solution window
+  \item Which instructions have been seen before
+  \item Cards left in card played area
+  \item Earned awards
+  \item Was the puzzle solved
+\end{itemize}
+
+All of this data comes from a player state script which controls the player's save state that is in
+use.
+
+\subsubsection{Puzzle Level Caching}
+When the player decides to leave a puzzle level (via exiting the game, returning to the
+level menu, etc.), the puzzle system saves the state of the current level by using the player
+state interface to write to the correct save file. This flow of information can be seen in
+\ref{fig:puzzle_level_data_flow}.\\
+
+All of the data that is saved is the same as the data that is loaded from previous puzzle attemps:
+\begin{itemize}
+  \item Instructions left in solution window
+  \item Which instructions have been seen before
+  \item Cards left in card played area
+  \item Earned awards
+  \item Was the puzzle solved
 \end{itemize}
 
 \subsubsection{Input}
 The Puzzle System is in charge of filling the puzzle Scene's input box with data
-that is necessary for the chosen level. As shown by Figure \ref{fig:Puzzle_System_Input_Overview}, 
-the puzzle generator takes an input size \textit{n} from the JSON file and randomly generates an array of 
-\textit{n} numbers that is used to fill the input box with corresponding data. A more visualized
-look at how the input box game object is filled is shown in Figure \ref{fig:Puzzle_System_Input_Same_Before}.\\
+that is necessary for the chosen level, shown by Figure \ref{fig:Puzzle_System_Input_Overview}.
+The puzzle generator can either randomly generate an array of \textit{n} numbers or use a developer
+specified input stream to fill the input box with corresponding data.\\
 
 \begin{figure}[!hb]
   \caption{Puzzle System: Input Overview}
@@ -157,6 +129,8 @@ look at how the input box game object is filled is shown in Figure \ref{fig:Puzz
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overview.png}
 \end{figure}
+\vfill
+\clearpage
 
 The puzzle system is responsible for giving the actor the correct data from the
 input box when it is needed. The actor can make an input request to the input box.
@@ -231,7 +205,7 @@ data item from its hands to the output box. After all of the instructions are ru
 entire contents of the output box are submitted for validation, as shown in Figure
 \ref{fig:Puzzle_System_Output_Interaction}.\\
 
-The puzzle generation script generates the expected output based on the input that
+A solution generation script generates the expected output based on the input that
 was also generated previously. An output validation script takes the contents of
 the player's output box, their solution, and compares it against the expected output.
 If the contents match, the player has solved the puzzle. If the contents do not match,
@@ -256,11 +230,12 @@ the player's solution did not solve the puzzle. Figure \ref{fig:Puzzle_System_Ou
 \subsubsection{Game Cards}
 The Puzzle System makes use of the puzzle generator in order to tell the user interface
 which game cards are placed in certain positions on the game board when beginning
-or loading a level. Card positions are pulled from the current level's JSON file.
+or loading a level. Allowed cards are retrieved from the current level's puzzle data object.
+Card positions are pulled from the player state save file.
 A card position not only indicates if a card is in the player's card hand or the puzzle board's
 card slots, but also the position within either of those areas.\\
 
-The card hand is filled during initialization. The JSON file will contain the following:
+The card hand is filled during initialization. The puzzle data object will contain the following:
 \begin{itemize}
    \item Number of register cards
    \item Number of stack cards
@@ -269,21 +244,17 @@ The card hand is filled during initialization. The JSON file will contain the fo
 \end{itemize}
 
 The initial content of the card hand is based on this data, although the locations
-of these cards may be changed later on.\\
+of these cards may be changed later on. Cards can move between two different puzzle scene areas:
+\begin{itemize}
+   \item Card hand area
+   \item Card played area
+\end{itemize}
 
 Any update to a card's position will be reflected when returning to that level.
 When a level is exited, all of the cards locations on the game board are saved to
-that level's JSON file. When a level is loaded at another point in time, the card
-objects will be instantiated based on their locations, rather than the number of
-each card like above.\\
-
-\begin{figure}[!hb]
-  \caption{Game Card Position Loading/Initializing}
-  \label{fig:Puzzle_System_Cards}
-  \centering
-  \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Cards.png}
-\end{figure}
-\newpage
+that level's save file. When a level is loaded at another point in time, the card
+objects will be instantiated like above, but also placed at their saved locations.\\
+\clearpage
 
 \subsubsection{Instructions}
 The puzzle scene tells the instruction editor component of the User Interface:
@@ -299,19 +270,19 @@ The puzzle scene tells the instruction editor component of the User Interface:
   \end{itemize}
 \end{itemize}
 
-The puzzle level's JSON file contains the information that the User Interface
+The puzzle level's puzzle data object contains the information that the User Interface
 needs to present the player with the appropriate instructions for a given puzzle level.
-The puzzle generator reads the JSON data and passes the instruction set off to the User Interface
+The puzzle generator reads the puzzle data and passes the instruction set off to the User Interface
 as shown in Figure \ref{fig:Instruction_Flow}.
 
 \begin{figure}[!hb]
   \caption{Loading Instruction Set}
   \label{fig:Instruction_Flow}
   \centering
-  \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Instruction_Flow.png}
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Instruction_Flow.png}
 \end{figure}
 
-The JSON file associated to the puzzle level also tells the user interface which
+The player's save file tells the user interface which
 instructions were left in the editor (Figure \ref{fig:Instruction_Flow2}). The initial state of the puzzle level leaves the
 editor empty. Otherwise, the editor is populated with the same instructions that were
 left during a previous attempt. This also includes final solutions that actually solved the
@@ -321,5 +292,5 @@ puzzle level.
   \caption{Loading Instruction Editor State}
   \label{fig:Instruction_Flow2}
   \centering
-  \includegraphics[scale=0.7]{Diagrams/Puzzle_System_Instruction_Flow2.png}
+  \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Instruction_Flow2.png}
 \end{figure}
