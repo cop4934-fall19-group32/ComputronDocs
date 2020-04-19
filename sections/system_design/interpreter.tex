@@ -28,43 +28,43 @@ make up the CAL.
 	 is not holding any value. This instruction is often used to break out of loops.
 	\item JUMP IF LESS [X]\\
 	The JUMP IF LESS [X] is a conditional jump instruction, which is only activated if the 
-	value the Actor is holding is less than the value stored in player-specified register X. If 
-	register X is empty, this instruction will be considered invalid and raise a runtime error.
+	value the Actor is holding is less than the value stored in player-specified memory card X. If 
+	memory card X is empty, this instruction will be considered invalid and raise a runtime error.
 	\item JUMP IF GREATER [X]\\
 	The JUMP IF GREATER [X] is a conditional jump instruction, which is only activated if 
-	the value the Actor is holding is greater than the value stored in player-specified register 
-	X. If register X is empty, this instruction will be considered invalid and raise a runtime error.
+	the value the Actor is holding is greater than the value stored in player-specified memory card 
+	X. If memory card X is empty, this instruction will be considered invalid and raise a runtime error.
 	\item JUMP IF EQUAL [X]\\
-	The JUMP IF GREATER [X] is a conditional jump instruction, which is only activated if 
-	the value the Actor is holding is greater than the value stored in player-specified register 
-	X. If register X is empty, this instruction will be considered invalid and raise a runtime error.
+	The JUMP IF EQUAL [X] is a conditional jump instruction, which is only activated if 
+	the value the Actor is holding is equal to the value stored in player-specified memory card 
+	X. If memory card X is empty, this instruction will be considered invalid and raise a runtime error.
 	\item MOVETO [X]\\
 	The MOVETO [X] command instructs Computron to move the value currently being 
-	held into the player-specified register X. If Computron's hands are currently empty, this 
+	held into the player-specified memory card X. If Computron's hands are currently empty, this 
 	instruction will be considered invalid and raise a runtime error. If there is a value currently in 
-	the register, it will be overwritten.
+	the memory card, it will be overwritten.
 	\item MOVEFROM [X]\\
 	The MOVEFROM [X] command instructs Computron to remove the value currently being 
-	stored in the player-specified register X. If the register is empty, Computron will retrieve 
+	stored in the player-specified memory card X. If the memory card is empty, Computron will retrieve 
 	and hold a NULL value. If Computron is currently holding a value, it will be overwritten.
 	\item COPYTO [X]\\
 	The COPYTO [X] command instructs Computron to move the value currently being held 
-	into the player-specified register X. Computron will retain a copy of the number. If 
+	into the player-specified memory card X. Computron will retain a copy of the number. If 
 	Computron's hands are currently empty, this instruction will be considered invalid and raise a 
-	runtime error. If there is a value currently in the register, it will be overwritten.
+	runtime error. If there is a value currently in the memory card, it will be overwritten.
 	\item COPYFROM [X]\\
 	The COPYFROM [X] command instructs Computron to retrieve a copy of the value currently 
-	being stored in in the player-specified register X. If the register is empty, Computron will 
+	being stored in in the player-specified memory card X. If the memory card is empty, Computron will 
 	retrieve and hold a NULL value. If Computron is currently holding a value, it will be overwritten.
 	\item ADD [X]\\
 	The ADD [X] command instructs Computron to add the value stored in player-specified 
-	register X to the value currently held. If either Computron's hands or register X are empty, this 
+	memory card X to the value currently held. If either Computron's hands or memory card X are empty, this 
 	instruction will be considered invalid and raise a runtime error. Otherwise, Computron will 
 	perform the addition and overwrite his current value.\\
 	\item SUBTRACT [X]\\
 	The SUBTRACT [X] command instructs Computron to subtract the value stored in 
-	player-specified register X from the value currently held. If either Computron's hands or 
-	register X are empty, this instruction will be considered invalid and raise a runtime error. 
+	player-specified memory card X from the value currently held. If either Computron's hands or 
+	memory card X are empty, this instruction will be considered invalid and raise a runtime error. 
 	Otherwise, Computron will perform the subtraction and overwrite his current value.
 \end{itemize}
 
