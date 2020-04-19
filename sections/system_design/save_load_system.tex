@@ -1,5 +1,5 @@
 \subsubsection{Overview}
-The Save-Load system is the backbone of Computron. It is responsible for serializing and deserializing all the relevant player data needed to reconstruct play sessions. The system currently supports up to three player save slots to store game data. This restriction is an artificial one, as we only chose to allow the UI of the main menu to address three slots. The underlying mechanisms of the system can handle arbitrarily many save slots, as long as the player is given an interface to select them. An overview is provided by \ref{fig:saveload_system_diagram}.
+The Save-Load system is the backbone of \textit{Computron}. It is responsible for serializing and deserializing all the relevant player data needed to reconstruct play sessions. The system currently supports up to three player save slots to store game data. This restriction is an artificial one, as we only chose to allow the UI of the main menu to address three slots. The underlying mechanisms of the system can handle arbitrarily many save slots, as long as the player is given an interface to select them. An overview is provided by \ref{fig:saveload_system_diagram}.
 
 \begin{figure}[!hb]
     \caption{Save-Load System Overview}
@@ -32,3 +32,7 @@ Top-level Saves defer the responsibility of tracking per-puzzle player data to a
 
 \subsubsection{Scene Traversal}
 After all this data is collected, and loaded (from either a binary or JSON save file) it is transferred to a PlayerState GameObject which travels between all scenes. This PlayerState object provides an interface for level generation systems read and write from player session data to configure the scenes and report significant game events.
+
+In the level select scene PlayerState is used extensively. PlayerState is queried to color the level graph to reflect node availability, restrict node access to enforce player progression, and update the scene's heads up display.
+
+In the puzzle scene, it was imperative that players be able to revisit puzzles and see the solution they left there. PlayerState is used to regenerate those saved solutions.
