@@ -4,7 +4,7 @@ Player save information is not the only information to traverse scenes. In order
 This information is embedded in the all of the GameObjects used to create the level select graph. These nodes of the graph serve two purposes. The root GameObject of each node contains all of the data required to maintain the level graph. This includes an adjacency list of neighbors, components required to render and draw lines between the nodes, and an integer value specifying the required score to make that node traversable. Attached as a payload to each of these nodes is a child GameObject that contains the enumeration of all the data required to generate   
 
 \subsubsection{Data}
-The enumeration of all the data required to generate a level can be found via the public members of the Puzzle Data. This data includes:
+The enumeration of all the data required to generate a level can be found via the public members of the Puzzle Data class. This data includes:
 
 \begin{itemize}
     \item Puzzle name
