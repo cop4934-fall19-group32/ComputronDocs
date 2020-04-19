@@ -1,9 +1,4 @@
-At the highest level, our game can be broken into 5 major systems that will work 
-together to provide the experience we are hoping to create. These parts are The 
-Engine, The Puzzle System, The User Interface, The Interpreter, and The Actor. 
-The relationship between these systems has been designed to be as simple as 
-possible. As shown in Figure \ref{fig:overall_system_diagram}, each major system 
-is only responsible for interfacing with two others. 
+At the highest level, our game is organized into several major systems that communicate between three Unity Scenes: the Save-Load system, the Level-Generation System, the Puzzle System, the Puzzle User Interface, the Interpreter, and the Actor. A graphical representation of the relationship between these systems is show in \ref{fig:overall_system_diagram}.
 
 \begin{figure}[!hb]
     \caption{Computron System Overview}
@@ -12,5 +7,4 @@ is only responsible for interfacing with two others.
     \includegraphics[width=\textwidth]{Diagrams/SystemDiagram.png}
 \end{figure}
 
-The nature of these interfaces, as well as the operations, responsibilities, and 
-requirements of each of these major systems, will be detailed in the subsequent sections.
+A more detailed explanation of all of these systems can be found throughout the remainder of this section.

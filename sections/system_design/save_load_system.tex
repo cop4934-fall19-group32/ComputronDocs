@@ -1,0 +1,10 @@
+\subsubsection{Overview}
+The Save-Load system is the backbone of Computron. It is entirely responsible for serializing and deserializing all the relevant player data needed to reconstruct play sessions. The system currently supports up to three player save slots to store game data. This restriction is an artificial one, as we only chose to allow the UI of the main menu to address three slots. The underlying mechanisms of the system can handle arbitrarily many save slots, as long as the player is given an interface to select them. //
+
+As hinted to above, the only place in which the player actively interacts with the Save-Load system is at game startup. After hitting play, the player will be presented with a choice of three save slots, and the necessary UI to create, delete, or select a save in any of the three slots. //
+
+\subsubsection{Data}
+Below is an enumeration of the data captured by the save load system:
+\begin{itemize}
+    \item 
+\end{itemize}
