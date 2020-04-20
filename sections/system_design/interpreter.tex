@@ -1,9 +1,13 @@
-\subsection{Overview}
-As the invisible interface between the player's instructions window and the Actor's 
-execution logic, the Interpreter's responsibilities are considerably abstracted from 
-normal gameplay programming. More specifically, the Interpreter is responsible for 
-defining the game's assembly-like language, extracting player instructions from the 
-user interface, and marshaling the release of commands to the actor for execution.\\
+\subsubsection{Overview}
+As the invisible interface between the player's instructions window and the Actor's execution logic, the Interpreter's responsibilities are considerably abstracted from normal gameplay programming. More specifically, the Interpreter is responsible for defining the game's assembly-like language, extracting player instructions from the user interface, marshaling the release of commands to the actor for execution, and performing runtime analysis of player submissions. Below is the Interpreter's system diagram.
+
+\begin{figure}[!hb]
+    \caption{Interpreter System Overview}
+    \label{fig:interpreter_system_overview}
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/interpreter_diagram.png}
+\end{figure}
+
 
 \subsubsection{Language}
 In order to keep the game accessible to inexperienced users, we developed a simple
