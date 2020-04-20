@@ -1,7 +1,7 @@
 \subsubsection{Overview}
 Player save information is not the only information to traverse scenes. In order to allow 25 different puzzles to be displayed on the same Unity scene, \textit{Computron} makes heavy use of an enumeration of puzzle data, and a Puzzle Generator that processes that data to configure the puzzle scene for the selected puzzle.
 
-This information is embedded in the all of the GameObjects used to create the level select graph. These nodes of the graph serve two purposes. The root GameObject of each node contains all of the data required to maintain the level graph. This includes an adjacency list of neighbors, components required to render and draw lines between the nodes, and an integer value specifying the required score to make that node traversable. Attached as a payload to each of these nodes is a child GameObject that contains the enumeration of all the data required to generate   
+This information is embedded in all of the GameObjects used to create the level select graph. The nodes of the graph store vital information for both the front end and the back end of this scene. The root GameObject of each node contains all of the data required to maintain the level graph. This includes an adjacency list of neighbors, components required to render and draw lines between the nodes, and an integer value specifying the required score to make that node traversable. Attached as a payload to each of these nodes is a child GameObject that contains the enumeration of all the data required to generate the puzzle level that node represents.
 
 \subsubsection{Data}
 The enumeration of all the data required to generate a level can be found via the public members of the Puzzle Data class. This data includes:
@@ -9,8 +9,8 @@ The enumeration of all the data required to generate a level can be found via th
 \begin{itemize}
     \item Puzzle name
     \item Puzzle prompt
-    \item The type of Output Generator to use
     \item Puzzle hints
+    \item Which Output Generator to use
     \item Number of each card type allowed in the puzzle
     \item Which challenge stars are available for the level
     \item The score threshold for each enabled challenge star
@@ -23,7 +23,7 @@ The enumeration of all the data required to generate a level can be found via th
     \item A Tutorialization script to specify an interactive tutorial sequence
 \end{itemize}
 
-Manipulating the data structure above, and correctly connecting a prefabricated map node to the level graph are the only two steps required to add a basic puzzle to the game.
+Manipulating the data structure above and correctly connecting a prefabricated map node to the level graph are the only two steps required to add a basic puzzle to the game.
 
 \subsubsection{Scene Traversal}
 In order to feed puzzle information to the puzzle scene, that data object of a selected level node is extracted from the instance of the level graph and persisted to the Puzzle Scene for puzzle generation.

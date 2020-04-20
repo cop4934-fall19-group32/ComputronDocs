@@ -9,7 +9,7 @@ of the components of the puzzle system and how they communicate with one another
   \caption{Puzzle System Overview}
   \label{fig:puzzle_system_diagram}
   \centering
-  \includegraphics[scale=0.6]{Diagrams/puzzle_system_diagram.png}
+  \includegraphics[scale=0.8]{Diagrams/puzzle_system_diagram.png}
 \end{figure}
 \vfill
 \clearpage
@@ -47,27 +47,24 @@ Here are the main components of the Puzzle Scene that rely on the Puzzle System:
 	\end{itemize}
 \end{itemize}
 
-Note:\\
-While the Game Cards and the Instruction Area fall under the User
+Note that while the Game Cards and the Instruction Area fall under the User
 Interface System, there are certain parts of these components that rely on
 the Puzzle System’s level generation functionalities. Only that relationship
 will be mentioned here. Refer to the User Interface System for a more detailed
 look at these game components.
-\clearpage
 
 \subsubsection{Puzzle Level Generation}
 When the player chooses a level, the puzzle system controls
-which game objects get loaded in to the puzzle Scene. This process is handled
+which game objects get loaded in to the puzzle scene. This process is handled
 by a puzzle generation script as seen in Figure \ref{fig:puzzle_level_data_flow}.\\
 
-\begin{figure}[!hb]
+\begin{figure}[t]
   \caption{Puzzle Level Loading/Saving}
   \label{fig:puzzle_level_data_flow}
   \centering
   \includegraphics[scale=0.6]{Diagrams/PuzzleLevelDataFlow.png}
 \end{figure}
 \vfill
-\clearpage
 
 The puzzle generator uses two different kinds of data: initial puzzle data and saved puzzle data.\\
 
@@ -130,11 +127,10 @@ specified input stream to fill the input box with corresponding data.\\
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Overview.png}
 \end{figure}
 \vfill
-\clearpage
 
-The puzzle system is responsible for giving the actor the correct data from the
-input box when it is needed. The actor can make an input request to the input box.
-The system will simply return the top-most element from the input box to the actor entity, along with the
+The puzzle system is responsible for giving the Actor the correct data from the
+input box when it is needed. The Actor can make an input request to the input box.
+The system will simply return the top-most element from the input box to the Actor entity, along with the
 numerical data that is associated with it behind the scenes (see Figure \ref{fig:Puzzle_System_Input_Actor}).\\
 
 \begin{figure}[!hb]
@@ -144,15 +140,15 @@ numerical data that is associated with it behind the scenes (see Figure \ref{fig
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Input_Actor.png}
 \end{figure}
 
-\textit{Note:} If the Actor makes an input request to an empty input box, the puzzle system
+Note that if the Actor makes an input request to an empty input box, the puzzle system
 will return NULL.\\
 
 The input box has a fixed number of input items that can fit inside (5 in our examples).
 Sometimes the size of the input stream can be larger than the size of the input box
 itself. In this case, the input box works as a queue. If we had an input stream of
-size 6, the 6th element would be hidden until the top-most element of the input box
-is removed by the actor. All of the elements below will move up a slot and the
-hidden 6th element would then appear at the bottom, as shown in Figure \ref{fig:Puzzle_System_Input_Overload_Before} and
+size six, the sixth element would be hidden until the top-most element of the input box
+is removed by the Actor. All of the elements below will move up a slot and the
+hidden sixth element would then appear at the bottom, as shown in Figure \ref{fig:Puzzle_System_Input_Overload_Before} and
 Figure \ref{fig:Puzzle_System_Input_Overload_After}.\\
 
 \begin{figure}[!htb]
@@ -171,7 +167,7 @@ Figure \ref{fig:Puzzle_System_Input_Overload_After}.\\
 \vfill
 \clearpage
 
-If the input stream is the same size as the input box, or if the actor has removed
+If the input stream is the same size as the input box, or if the Actor has removed
 enough numbers from a larger stream and there are no more slots to fill, the input numbers
 behave only slightly differently. Figure \ref{fig:Puzzle_System_Input_Same_Before}
 and Figure \ref{fig:Puzzle_System_Input_Same_After} show how the numbers below will move up a slot, like before,
@@ -205,11 +201,6 @@ data item from its hands to the output box. After all of the instructions are ru
 entire contents of the output box are submitted for validation, as shown in Figure
 \ref{fig:Puzzle_System_Output_Interaction}.\\
 
-A solution generation script generates the expected output based on the input that
-was also generated previously. An output validation script takes the contents of
-the player's output box, their solution, and compares it against the expected output.
-If the contents match, the player has solved the puzzle. If the contents do not match,
-the player's solution did not solve the puzzle. Figure \ref{fig:Puzzle_System_Output_Validation} shows this decision process.
 
 \begin{figure}[!hb]
   \caption{Output Interaction Points}
@@ -218,14 +209,23 @@ the player's solution did not solve the puzzle. Figure \ref{fig:Puzzle_System_Ou
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Output_Interaction.png}
 \end{figure}
 
-\begin{figure}[!hb]
+A solution generation script generates the expected output based on the input that
+was generated for that puzzle. An output validation script takes the contents of
+the player's output box, their solution, and compares it against the expected output.
+If the contents match, the player has solved the puzzle. If the contents do not match,
+the player's solution did not solve the puzzle. The purpose for this confirmation of output
+matching only is to allow the player to configure different algorithms that reach the same
+solution, and inherently present a challenge to find the ideal solution to garner the best
+possible score. Figure \ref{fig:Puzzle_System_Output_Validation} shows the decision process
+of validating a solution.
+
+\begin{figure}[t]
   \caption{Output Validation}
   \label{fig:Puzzle_System_Output_Validation}
   \centering
   \includegraphics[scale=0.9]{Diagrams/Puzzle_System_Output_Validation.png}
 \end{figure}
 \vfill
-\clearpage
 
 \subsubsection{Game Cards}
 The Puzzle System makes use of the puzzle generator in order to tell the user interface
@@ -254,7 +254,6 @@ Any update to a card's position will be reflected when returning to that level.
 When a level is exited, all of the cards locations on the game board are saved to
 that level's save file. When a level is loaded at another point in time, the card
 objects will be instantiated like above, but also placed at their saved locations.\\
-\clearpage
 
 \subsubsection{Instructions}
 The puzzle scene tells the instruction editor component of the User Interface:
@@ -275,7 +274,7 @@ needs to present the player with the appropriate instructions for a given puzzle
 The puzzle generator reads the puzzle data and passes the instruction set off to the User Interface
 as shown in Figure \ref{fig:Instruction_Flow}.
 
-\begin{figure}[!hb]
+\begin{figure}[t]
   \caption{Loading Instruction Set}
   \label{fig:Instruction_Flow}
   \centering

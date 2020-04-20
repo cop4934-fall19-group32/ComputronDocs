@@ -1,5 +1,5 @@
 \subsubsection{Overview}
-As the invisible interface between the player's instructions window and the Actor's execution logic, the Interpreter's responsibilities are considerably abstracted from normal gameplay programming. More specifically, the Interpreter is responsible for defining the game's assembly-like language, extracting player instructions from the user interface, marshaling the release of commands to the actor for execution, and performing runtime analysis of player submissions. Below is the Interpreter's system diagram.
+As the invisible interface between the player's instructions window and the Actor's execution logic, the Interpreter's responsibilities are considerably abstracted from normal gameplay programming. More specifically, the Interpreter is responsible for defining the game's assembly-like language, extracting player instructions from the user interface, marshaling the release of commands to the Actor for execution, and performing runtime analysis of player submissions. See Figure \ref{fig:interpreter_system_overview} for a look at the Interpreter's system diagram.
 
 \begin{figure}[!hb]
     \caption{Interpreter System Overview}
@@ -7,7 +7,6 @@ As the invisible interface between the player's instructions window and the Acto
     \centering
     \includegraphics[width=\textwidth]{Diagrams/interpreter_diagram.png}
 \end{figure}
-
 
 \subsubsection{Language}
 In order to keep the game accessible to inexperienced users, we developed a simple
@@ -33,47 +32,50 @@ make up the CAL.
 	\item JUMP IF LESS [X]\\
 	The JUMP IF LESS [X] is a conditional jump instruction, which is only activated if the 
 	value the Actor is holding is less than the value stored in player-specified memory card X. If 
-	memory card X is empty, this instruction will be considered invalid and raise a runtime error.
+	memory card X is empty, or if Comptron is currently holding a null value, this instruction 
+           will be considered invalid and raise a runtime error.
 	\item JUMP IF GREATER [X]\\
 	The JUMP IF GREATER [X] is a conditional jump instruction, which is only activated if 
 	the value the Actor is holding is greater than the value stored in player-specified memory card 
-	X. If memory card X is empty, this instruction will be considered invalid and raise a runtime error.
+	X. If memory card X is empty, or if Comptron is currently holding a null value, this instruction 
+           will be considered invalid and raise a runtime error.
 	\item JUMP IF EQUAL [X]\\
 	The JUMP IF EQUAL [X] is a conditional jump instruction, which is only activated if 
 	the value the Actor is holding is equal to the value stored in player-specified memory card 
-	X. If memory card X is empty, this instruction will be considered invalid and raise a runtime error.
-	\item MOVETO [X]\\
-	The MOVETO [X] command instructs Computron to move the value currently being 
+	X. If memory card X is empty, or if Comptron is currently holding a null value, this instruction 
+           will be considered invalid and raise a runtime error.
+	\item MOVE TO [X]\\
+	The MOVE TO [X] command instructs Computron to move the value currently being 
 	held into the player-specified memory card X. If Computron's hands are currently empty, this 
-	instruction will be considered invalid and raise a runtime error. If there is a value currently in 
-	the memory card, it will be overwritten.
-	\item MOVEFROM [X]\\
-	The MOVEFROM [X] command instructs Computron to remove the value currently being 
+	instruction will be considered invalid and raise a runtime error.
+	\item MOVE FROM [X]\\
+	The MOVE FROM [X] command instructs Computron to remove the value currently being 
 	stored in the player-specified memory card X. If the memory card is empty, Computron will retrieve 
 	and hold a NULL value. If Computron is currently holding a value, it will be overwritten.
-	\item COPYTO [X]\\
-	The COPYTO [X] command instructs Computron to move the value currently being held 
-	into the player-specified memory card X. Computron will retain a copy of the number. If 
+	\item COPY TO [X]\\
+	The COPY TO [X] command instructs Computron to make a copy of the value currently being held 
+	and place it into the player-specified memory card X. Computron will retain a copy of the number. If 
 	Computron's hands are currently empty, this instruction will be considered invalid and raise a 
-	runtime error. If there is a value currently in the memory card, it will be overwritten.
-	\item COPYFROM [X]\\
-	The COPYFROM [X] command instructs Computron to retrieve a copy of the value currently 
-	being stored in in the player-specified memory card X. If the memory card is empty, Computron will 
-	retrieve and hold a NULL value. If Computron is currently holding a value, it will be overwritten.
+	runtime error.
+	\item COPY FROM [X]\\
+	The COPY FROM [X] command instructs Computron to retrieve a copy of the value currently 
+	being stored in in the player-specified memory card X. The memory card will return the value that
+	it holds. If the memory card is empty, Computron will retrieve and hold a NULL value. If Computron 
+	is currently holding a value, it will be overwritten.
 	\item ADD [X]\\
 	The ADD [X] command instructs Computron to add the value stored in player-specified 
 	memory card X to the value currently held. If either Computron's hands or memory card X are empty, this 
 	instruction will be considered invalid and raise a runtime error. Otherwise, Computron will 
-	perform the addition and overwrite his current value.\\
+	perform the addition and overwrite his current value with the result.
 	\item SUBTRACT [X]\\
 	The SUBTRACT [X] command instructs Computron to subtract the value stored in 
 	player-specified memory card X from the value currently held. If either Computron's hands or 
 	memory card X are empty, this instruction will be considered invalid and raise a runtime error. 
-	Otherwise, Computron will perform the subtraction and overwrite his current value.
+	Otherwise, Computron will perform the subtraction and overwrite his current value with the result.
 \end{itemize}
 
 \subsubsection{Program Counter}
-To facilitate proper simulation of the player's solution, the interpreter will need to maintain 
+To facilitate proper simulation of the player's solution, the Interpreter will need to maintain 
 a program counter that iterates and jumps through the player's code appropriately. To 
 ensure that these updates happen correctly, the Interpreter will need to rely on reports 
 from the Actor that state the validity of instructions and the result of conditional expressions.
@@ -113,7 +115,7 @@ The stages of the handshake are:
 	will issue a Command Request to the Interpreter when the next player instruction is needed.
 	\item Command Response\\
 	The second step of the exchange is the Command Response. This response will be a 
-	data structure for the actor to parse, including the next instruction's opcode and argument.
+	data structure for the Actor to parse, including the next instruction's opcode and argument.
 	\item Command Evaluation\\
 	The last step of the exchange is the Command Evaluation. This stage is the Actor's chance 
 	to report runtime errors to the Interpreter if the instruction is deemed invalid and report 
@@ -122,7 +124,8 @@ The stages of the handshake are:
 
 \subsubsection{CAL Virtual Machine}
 The Actor's implementation of the CAL is tightly coupled to the physical state of the puzzle. In addition,
-it performs many non-executing tasks to visualize the language. These conditions made the unsuitable for 
+it performs many non-executing tasks to visualize the language. These conditions made the simulation unsuitable for 
 conducting performance and correctness evaluations. To support those functions of solution grading the Interpreter
 manages a Computron Assembly Language Virtual Machine (CALVM) object. The CALVM allows the interpreter to simulate
-player solutions rapidly, and inspect runtime data like error states and cycle count easily. 
+player solutions rapidly, and inspect runtime data like error states and cycle count easily. This also allows the game to
+reserve puzzle simulation explicitly for displaying player solutions.
